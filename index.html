@@ -1,7 +1,212 @@
-<div style=center>
-</divZ><h1>Relook</h1>
-<h2>Work in progress</h2>
-<br>
-<br>
-<p>Fabri leader supremo</p>
-</div>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relook · Gruppo Nexus · Fondamenti di HCI</title>
+<meta name="description" content="Relook — meno caos, più stile. Progetto del gruppo Nexus per il corso di Fondamenti di HCI, Politecnico di Milano.">
+<link rel="icon" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4EFE8; --card:#FBF8F4; --dark:#1F2A24; --acc:#B5532E; --muted:#545B56; --line:#DDD3C6; --dark2:#2B3A32;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"DM Sans",Arial,sans-serif;background:var(--bg);color:var(--dark);line-height:1.5;font-size:17px}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--acc)}
+  h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;line-height:1.05}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:10;background:rgba(244,239,232,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  nav .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:"DM Serif Display",serif;font-size:24px}
+  nav .brand img{width:30px;height:30px;border-radius:7px}
+  nav ul{display:flex;gap:24px;list-style:none;font-size:15px;font-weight:500}
+  nav ul a{text-decoration:none}
+  nav ul a:hover{color:var(--acc)}
+
+  /* hero */
+  .hero{background:var(--dark);color:var(--bg)}
+  .hero .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;padding:88px 24px}
+  .hero .eyebrow{color:#E59A78}
+  .hero h1{font-size:clamp(56px,9vw,104px);margin:14px 0 10px}
+  .hero h1 i{color:#E59A78}
+  .hero p{color:#D9E2DC;font-size:20px;max-width:540px}
+  .hero .meta{margin-top:28px;font-size:15px;color:#AFC0B6}
+  .hero .logo{justify-self:center;width:min(300px,70%);aspect-ratio:1;border-radius:50%;background:var(--dark2);display:grid;place-items:center}
+  .hero .logo img{width:52%;border-radius:18px}
+
+  section{padding:80px 0}
+  section h2{font-size:clamp(36px,5vw,52px);margin:10px 0 28px}
+
+  /* progetto */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .pillar{background:var(--card);border-radius:18px;padding:26px}
+  .pillar b{display:block;font-size:19px;margin-bottom:6px}
+  .pillar p{color:var(--muted);font-size:16px}
+  .lead{font-size:20px;max-width:760px;margin-bottom:32px}
+
+  /* consegne */
+  .deliveries{display:flex;flex-direction:column;gap:20px}
+  .del{background:var(--card);border-radius:18px;padding:28px;display:grid;grid-template-columns:90px 1fr auto;gap:24px;align-items:start;border-left:6px solid var(--acc)}
+  .del .num{font-family:"DM Serif Display",serif;font-size:56px;line-height:1;color:var(--acc)}
+  .del h3{font-size:22px;margin-bottom:4px}
+  .del .when{font-size:14px;color:var(--muted);margin-bottom:10px}
+  .del p{color:var(--muted);font-size:16px;max-width:560px}
+  .del .links{display:flex;flex-direction:column;gap:8px;min-width:220px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:2px solid var(--dark);transition:.15s}
+  .btn.primary{background:var(--dark);color:var(--bg)}
+  .btn:hover{background:var(--acc);border-color:var(--acc);color:#fff}
+  .btn.todo{border-style:dashed;color:var(--muted);border-color:var(--muted);pointer-events:none}
+  .badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background:var(--line);color:var(--dark);margin-left:8px;vertical-align:middle}
+  .badge.next{background:var(--acc);color:#fff}
+
+  /* team */
+  .team{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .member{background:var(--card);border-radius:18px;padding:16px;display:flex;align-items:center;gap:16px}
+  .member img{width:72px;height:88px;object-fit:cover;border-radius:10px;flex:none}
+  .member b{font-size:17px}
+
+  footer{background:var(--dark);color:#AFC0B6;font-size:14px;padding:32px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+  @media (max-width:820px){
+    nav ul{display:none}
+    .hero .wrap{grid-template-columns:1fr;padding:56px 24px}
+    .hero .logo{display:none}
+    .pillars,.team{grid-template-columns:1fr}
+    .del{grid-template-columns:1fr;gap:12px}
+    .del .links{min-width:0}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/logo-icon.png" alt="">Relook</a>
+    <ul>
+      <li><a href="#progetto">Il progetto</a></li>
+      <li><a href="#consegne">Consegne</a></li>
+      <li><a href="#gruppo">Il gruppo</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Fondamenti di HCI · Politecnico di Milano</p>
+      <h1>Relook: <i>meno caos, più stile</i></h1>
+      <p>Un nuovo look senza stravolgere il guardaroba: riscoprire e combinare i vestiti che si hanno già, comprare in modo consapevole e dare una seconda vita ai capi inutilizzati.</p>
+      <p class="meta">Gruppo Nexus · a.a. 2026/27</p>
+    </div>
+    <div class="logo"><img src="assets/logo-icon.png" alt="Logo Relook"></div>
+  </div>
+</header>
+
+<main>
+  <section id="progetto">
+    <div class="wrap">
+      <p class="eyebrow">Il progetto</p>
+      <h2>«Non ho niente da mettere»</h2>
+      <p class="lead">Aprire un armadio pieno e non trovare nulla capita a quasi tutti. Spesso non mancano i vestiti: manca una visione d’insieme. Relook la offre e accompagna tre momenti.</p>
+      <div class="pillars">
+        <div class="pillar"><b>Scegliere</b><p>Outfit pronti con i capi disponibili, in base a meteo, capi a lavare, occasione e dress code.</p></div>
+        <div class="pillar"><b>Comprare</b><p>Prima dell’acquisto: hai già qualcosa di simile? Con cosa si abbinerà?</p></div>
+        <div class="pillar"><b>Lasciar andare</b><p>I capi fermi da tempo tornano negli outfit o vengono venduti, donati o regalati.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="consegne" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">Consegne</p>
+      <h2>Il percorso del progetto</h2>
+
+      <div class="deliveries">
+
+        <!-- COMPITO 1 -->
+        <article class="del">
+          <div class="num">01</div>
+          <div>
+            <h3>Needfinding</h3>
+            <p class="when">Ottobre 2026</p>
+            <p>7 interviste (5 utenti target, di cui 2 estremi, e 2 esperte) e un questionario con 408 risposte sulle abitudini di abbigliamento. Ne emergono 7 bisogni e le prime idee.</p>
+          </div>
+          <div class="links">
+            <a class="btn primary" href="consegne/C1-needfinding.pdf" target="_blank">Slide (PDF)</a>
+          </div>
+        </article>
+
+        <!-- COMPITO 2 -->
+        <article class="del">
+          <div class="num">02</div>
+          <div>
+            <h3>Raffinamento e focus</h3>
+            <p class="when">Ottobre 2026</p>
+            <p>Due focus group, quattro personas con i loro scenari, brainstorming e votazione delle soluzioni, nome e value proposition.</p>
+          </div>
+          <div class="links">
+            <a class="btn primary" href="consegne/C2-raffinamento-e-focus.pdf" target="_blank">Slide (PDF)</a>
+          </div>
+        </article>
+
+        <!-- COMPITO 3 -->
+        <article class="del">
+          <div class="num">03</div>
+          <div>
+            <h3>Task, storyboard e primi prototipi <span class="badge next">In corso</span></h3>
+            <p class="when">Scadenza 16 novembre 2026</p>
+            <p>Tre task con HTA e TDH, uno storyboard a fumetto e due prototipi low-fidelity: app mobile e agente conversazionale. Scelta finale: l’app mobile.</p>
+          </div>
+          <div class="links">
+            <!-- Sostituire con il PDF delle slide quando è pronto, poi togliere la classe "todo" -->
+            <a class="btn primary todo" href="consegne/C3-task-storyboard-prototipi.pdf" target="_blank">Slide (PDF)</a>
+            <a class="btn" href="consegne/C3-storyboard.pdf" target="_blank">Storyboard (PDF)</a>
+            <!-- Inserire i link Figma -->
+            <a class="btn todo" href="#">Prototipo 1 · Figma</a>
+            <a class="btn todo" href="#">Prototipo 2 · Figma</a>
+          </div>
+        </article>
+
+        <!--
+          Per aggiungere una nuova consegna, copiare un blocco <article class="del"> qui sopra
+          e cambiare numero, titolo, data, descrizione e link.
+          I PDF vanno nella cartella "consegne/".
+        -->
+
+      </div>
+    </div>
+  </section>
+
+  <section id="gruppo" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">Il gruppo</p>
+      <h2>Nexus</h2>
+      <div class="team">
+        <div class="member"><img src="assets/team/ruggiero.jpg" alt="Ruggiero Leone"><b>Ruggiero Leone</b></div>
+        <div class="member"><img src="assets/team/fabrizio.jpg" alt="Fabrizio Mazzoleni"><b>Fabrizio Mazzoleni</b></div>
+        <div class="member"><img src="assets/team/nicole.jpg" alt="Nicole Cianci"><b>Nicole Cianci</b></div>
+        <div class="member"><img src="assets/team/davide.jpg" alt="Davide Motta"><b>Davide Motta</b></div>
+        <div class="member"><img src="assets/team/giulia.jpg" alt="Giulia Brivio"><b>Giulia Brivio</b></div>
+        <div class="member"><img src="assets/team/jorge.jpg" alt="Jorge Adrian De la Garza Flores"><b>Jorge Adrian De la Garza Flores</b></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Relook · Gruppo Nexus</span>
+    <span>Fondamenti di HCI · Politecnico di Milano · a.a. 2026/27</span>
+  </div>
+</footer>
+
+</body>
+</html>
