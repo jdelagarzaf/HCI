@@ -7,247 +7,157 @@
 <meta name="description" content="Relook — meno caos, più stile. Progetto del gruppo Nexus per il corso di Fondamenti di HCI, Politecnico di Milano.">
 <meta property="og:title" content="Relook · meno caos, più stile">
 <meta property="og:description" content="Progetto del gruppo Nexus per Fondamenti di HCI, Politecnico di Milano.">
-<meta property="og:image" content="assets/logo-icon.png">
-<meta name="theme-color" content="#1F2A24">
-<link rel="icon" href="assets/logo-icon.png">
+<meta name="theme-color" content="#121110">
+<link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F4EFE8; --card:#FBF8F4; --dark:#1F2A24; --dark2:#2B3A32; --acc:#B5532E; --acc2:#E59A78;
-    --acc-t:#9C4424; --muted:#545B56; --line:#DDD3C6; --soft:#AFC0B6;
-    --r:20px; --ease:cubic-bezier(.2,.7,.2,1);
+    --ivory:#F4F0E9; --paper:#FAF8F4; --ink:#121110; --espresso:#2E2119;
+    --stone:#5B564F; --line:#E0D9CE; --champ:#C9AE82; --champ-t:#7A603C;
+    --serif:"Bodoni Moda",Didot,"Bodoni 72",Georgia,serif;
+    --sans:"Jost",Futura,system-ui,sans-serif;
+    --ease:cubic-bezier(.2,.7,.2,1);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;scroll-padding-top:72px}
-  body{font-family:"DM Sans",system-ui,Arial,sans-serif;background:var(--bg);color:var(--dark);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased}
-  [hidden]{display:none!important}
+  body{font-family:var(--sans);font-weight:400;background:var(--ivory);color:var(--ink);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
   img{display:block;max-width:100%}
   a{color:inherit}
   button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
-  :focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:6px}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--acc-t)}
-  h1,h2,h3.serif{font-family:"DM Serif Display",Georgia,serif;font-weight:400;line-height:1.05}
-  section{padding:96px 0}
-  section h2{font-size:clamp(38px,5.4vw,58px);margin:10px 0 18px}
-  .lead{font-size:20px;max-width:720px;color:var(--muted)}
+  :focus-visible{outline:2px solid var(--champ-t);outline-offset:4px}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+  .eyebrow{font-size:12px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--champ-t);display:flex;align-items:center;gap:14px}
+  .eyebrow::before{content:"";width:32px;height:1px;background:currentColor;flex:none}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.01em}
+  em{font-style:italic}
+  section{padding:120px 0}
+  section h2{font-size:clamp(40px,6vw,72px);margin:18px 0 22px}
+  .lead{font-size:19px;font-weight:300;max-width:600px;color:var(--stone)}
 
-  /* progress + nav */
-  #progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--acc);transform-origin:0 50%;transform:scaleX(0);z-index:30}
-  nav{position:sticky;top:0;z-index:20;background:rgba(244,239,232,.86);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+  /* nav */
+  #progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--champ);transform-origin:0 50%;transform:scaleX(0);z-index:30}
+  nav{position:sticky;top:0;z-index:20;background:rgba(244,240,233,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
   nav.scrolled{border-color:var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-  .brand img.icon{width:32px;height:32px;border-radius:8px}
-  .brand img.word{height:24px;width:auto}
-  nav ul{display:flex;gap:6px;list-style:none;font-size:15px;font-weight:500}
-  nav ul a{text-decoration:none;padding:8px 14px;border-radius:999px;transition:background .2s,color .2s}
-  nav ul a:hover{background:var(--line)}
-  nav ul a.active{background:var(--dark);color:var(--bg)}
-  .burger{display:none;width:42px;height:42px;border-radius:12px;place-items:center}
-  .burger span{display:block;width:20px;height:2px;background:var(--dark);position:relative;transition:.25s}
-  .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:var(--dark);transition:.25s}
-  .burger span::before{top:-6px}.burger span::after{top:6px}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand img{height:22px;width:auto}
+  nav ul{display:flex;gap:34px;list-style:none;font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase}
+  nav ul a{text-decoration:none;position:relative;padding:6px 0}
+  nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+  nav ul a:hover::after,nav ul a.active::after{transform:scaleX(1);transform-origin:left}
+  .burger{display:none;width:42px;height:42px;place-items:center}
+  .burger span{display:block;width:22px;height:1.5px;background:var(--ink);position:relative;transition:.25s}
+  .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:22px;height:1.5px;background:var(--ink);transition:.25s}
+  .burger span::before{top:-7px}.burger span::after{top:7px}
   nav.open .burger span{background:transparent}
   nav.open .burger span::before{top:0;transform:rotate(45deg)}
   nav.open .burger span::after{top:0;transform:rotate(-45deg)}
 
   /* hero */
-  .hero{background:var(--dark);color:var(--bg);overflow:hidden;position:relative}
-  .hero::before{content:"";position:absolute;inset:auto -10% -40% auto;width:60vw;height:60vw;max-width:760px;max-height:760px;border-radius:50%;background:radial-gradient(circle,rgba(181,83,46,.35),transparent 65%);pointer-events:none}
-  .hero .wrap{display:grid;grid-template-columns:1.35fr 1fr;gap:48px;align-items:center;padding:104px 24px 112px;position:relative}
-  .hero .eyebrow{color:var(--acc2)}
-  .hero h1{font-size:clamp(58px,9.4vw,116px);margin:16px 0 18px;letter-spacing:-.01em}
-  .hero h1 i{color:var(--acc2);display:inline-block}
-  .hero p.sub{color:#D9E2DC;font-size:20px;max-width:540px}
-  .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
-  .hero .meta{margin-top:30px;font-size:15px;color:var(--soft)}
-  .mannequin{justify-self:center;width:min(360px,80%);aspect-ratio:1;border-radius:50%;background:var(--dark2);display:grid;place-items:center;position:relative}
-  .mannequin img{width:50%;border-radius:20px;animation:float 6s ease-in-out infinite;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
-  .mannequin .tag{position:absolute;background:var(--card);color:var(--dark);font-size:14px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 10px 30px -10px rgba(0,0,0,.45);white-space:nowrap;animation:float 7s ease-in-out infinite}
-  .mannequin .t1{top:12%;left:-6%;animation-delay:-1s}
-  .mannequin .t2{top:46%;right:-10%;animation-delay:-3s}
-  .mannequin .t3{bottom:8%;left:2%;animation-delay:-5s}
-  .mannequin .tag b{color:var(--acc-t)}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .hero{background:var(--ink);color:var(--ivory)}
+  .hero .wrap{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:center;min-height:calc(100vh - 68px);padding-top:80px;padding-bottom:80px}
+  .hero .eyebrow{color:var(--champ)}
+  .hero h1{font-size:clamp(64px,10vw,136px);margin:26px 0 28px}
+  .hero h1 em{color:var(--champ)}
+  .hero p.sub{color:#CFC8BC;font-size:19px;font-weight:300;max-width:520px}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:42px}
+  .hero .meta{margin-top:44px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#8E877B}
+  .figure{justify-self:center;position:relative;width:min(340px,100%);aspect-ratio:3/4;background:var(--espresso);display:grid;place-items:center}
+  .figure::before{content:"";position:absolute;inset:14px;border:1px solid rgba(201,174,130,.3)}
+  .figure svg{width:42%;height:auto;animation:sway 8s ease-in-out infinite}
+  .figure span{position:absolute;bottom:28px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#A39886}
+  @keyframes sway{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:2px solid var(--dark);transition:background .2s,color .2s,border-color .2s,transform .2s var(--ease)}
-  .btn:hover{transform:translateY(-2px)}
-  .btn.primary{background:var(--dark);color:var(--bg)}
-  .btn:hover,.btn.primary:hover{background:var(--acc);border-color:var(--acc);color:#fff}
-  .btn.light{border-color:var(--bg);color:var(--bg)}
-  .btn.light.fill{background:var(--bg);color:var(--dark)}
-  .btn.todo{border-style:dashed;color:var(--muted);border-color:#9AA19C;pointer-events:none;background:none}
-  .btn svg{width:16px;height:16px;flex:none}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 26px;font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:1px solid var(--ink);transition:background .3s,color .3s,border-color .3s}
+  .btn svg{width:14px;height:14px;flex:none;transition:transform .3s var(--ease)}
+  .btn:hover svg{transform:translate(2px,-2px)}
+  .btn.dark{background:var(--ink);color:var(--ivory)}
+  .btn.dark:hover{background:transparent;color:var(--ink)}
+  .btn.line:hover{background:var(--ink);color:var(--ivory)}
+  .btn.champ{background:var(--champ);border-color:var(--champ);color:var(--ink)}
+  .btn.champ:hover{background:transparent;color:var(--champ)}
+  .btn.ghost{border-color:rgba(244,240,233,.5);color:var(--ivory)}
+  .btn.ghost:hover{background:var(--ivory);color:var(--ink)}
+  .btn.todo{border-style:dashed;color:#8A857C;border-color:#B9B2A6;pointer-events:none;background:none}
 
-  /* stats */
-  .stats{background:var(--acc);color:#fff}
-  .stats .wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;padding:34px 24px}
-  .stat b{display:block;font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(38px,5vw,54px);line-height:1}
-  .stat span{font-size:14px;opacity:.92}
+  /* numeri */
+  .stats{border-bottom:1px solid var(--line)}
+  .stats .wrap{display:grid;grid-template-columns:repeat(5,1fr)}
+  .stat{padding:42px 10px 38px;text-align:center;border-left:1px solid var(--line)}
+  .stat:first-child{border-left:0}
+  .stat b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(40px,5vw,60px);line-height:1}
+  .stat span{display:block;margin-top:10px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--stone)}
 
-  /* demo */
-  .demo{display:grid;grid-template-columns:300px 1fr;gap:28px;margin-top:40px;align-items:start}
-  .tabs{display:flex;flex-direction:column;gap:12px}
-  .tab{text-align:left;background:var(--card);border-radius:var(--r);padding:20px 22px;border:2px solid transparent;transition:border-color .2s,transform .2s var(--ease),background .2s}
-  .tab:hover{transform:translateX(4px)}
-  .tab[aria-selected="true"]{border-color:var(--dark);background:#fff}
-  .tab small{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--acc-t);text-transform:uppercase}
-  .tab b{display:block;font-size:21px;margin:2px 0 4px}
-  .tab p{font-size:15px;color:var(--muted)}
-  .stage{background:var(--dark);border-radius:28px;padding:32px;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;color:var(--bg);min-height:520px}
-  .phone{width:270px;background:var(--card);color:var(--dark);border-radius:36px;padding:18px 16px 20px;border:8px solid #0F1512;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);position:relative}
-  .phone::before{content:"";display:block;width:70px;height:6px;border-radius:9px;background:#0F1512;margin:0 auto 14px}
-  .panel{display:none;animation:in .35s var(--ease)}
-  .panel.on{display:block}
-  @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  .ph-title{font-weight:700;font-size:15px}
-  .ph-sub{font-size:13px;color:var(--muted);margin-bottom:12px}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;font-size:12px;font-weight:500;line-height:1.25;transition:transform .3s var(--ease),opacity .3s}
-  .item i{display:block;height:58px;border-radius:9px;margin-bottom:6px;background:var(--c,#ccc);position:relative;overflow:hidden}
-  .item i::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.25),transparent 60%)}
-  .item.swap{transform:scale(.9);opacity:0}
-  .ph-btn{display:block;width:100%;margin-top:12px;background:var(--dark);color:var(--bg);font-weight:700;font-size:14px;padding:11px;border-radius:12px;transition:background .2s}
-  .ph-btn:hover{background:var(--acc)}
-  .ph-btn.ghost{background:none;color:var(--dark);border:1.5px solid var(--dark)}
-  .ph-row{display:flex;gap:8px}
-  .ph-row .ph-btn{flex:1}
-  .controls h3{font-family:"DM Serif Display",serif;font-weight:400;font-size:30px;line-height:1.1;margin-bottom:10px}
-  .controls p{color:#D9E2DC;font-size:16px;margin-bottom:20px;max-width:440px}
-  .controls label{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin:18px 0 8px}
-  .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{padding:8px 14px;border-radius:999px;border:1.5px solid #4A5C51;font-size:14px;font-weight:500;color:var(--bg);transition:.2s}
-  .chip:hover{border-color:var(--acc2)}
-  .chip[aria-pressed="true"]{background:var(--bg);color:var(--dark);border-color:var(--bg)}
-  .toast{position:absolute;left:50%;bottom:-18px;transform:translate(-50%,10px);background:var(--acc);color:#fff;font-weight:700;font-size:14px;padding:9px 16px;border-radius:999px;opacity:0;transition:.3s var(--ease);white-space:nowrap;pointer-events:none}
-  .toast.show{opacity:1;transform:translate(-50%,0)}
-  .shop{height:120px;border-radius:14px;background:repeating-linear-gradient(45deg,#555C3A 0 10px,#5D6440 10px 20px);display:grid;place-items:center;color:#fff;font-weight:700;font-size:14px;margin-bottom:10px}
-  .similar{display:none;margin-top:10px}
-  .similar.on{display:block;animation:in .35s var(--ease)}
-  .sim{display:flex;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;margin-bottom:6px;font-size:13px;line-height:1.25}
-  .sim i{width:40px;height:40px;border-radius:8px;background:var(--c);flex:none}
-  .sim small{color:var(--muted)}
-  .verdict{font-size:13px;font-weight:700;margin-top:6px}
-  .closet{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-  .cl{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:6px 4px;font-size:11px;line-height:1.15;text-align:center;transition:.2s}
-  .cl i{display:block;height:34px;border-radius:7px;background:var(--c);margin-bottom:4px}
-  .cl em{display:block;font-style:normal;font-weight:700;font-size:10px;margin-top:3px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-  .cl[data-d="tengo"]{border-color:#3E7A55}.cl[data-d="tengo"] em{color:#3E7A55}
-  .cl[data-d="vendo"]{border-color:var(--acc)}.cl[data-d="vendo"] em{color:var(--acc-t)}
-  .cl[data-d="dono"]{border-color:#A0396B}.cl[data-d="dono"] em{color:#A0396B}
-  .cl[data-d="regalo"]{border-color:#3A5BA0}.cl[data-d="regalo"] em{color:#3A5BA0}
-  .tally{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px}
-  .tally div{background:var(--dark2);border-radius:14px;padding:12px;text-align:center}
-  .tally b{display:block;font-family:"DM Serif Display",serif;font-weight:400;font-size:34px;line-height:1}
-  .tally span{font-size:13px;color:var(--soft)}
-
-  /* storyboard */
-  #storyboard{background:var(--card)}
-  .sb-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
-  .sb-filter{display:flex;gap:8px;flex-wrap:wrap}
-  .sb-filter button{padding:8px 14px;border-radius:999px;border:1.5px solid var(--dark);font-size:14px;font-weight:700;transition:.2s}
-  .sb-filter button[aria-pressed="true"]{background:var(--dark);color:var(--bg)}
-  .track{display:grid;grid-auto-flow:column;grid-auto-columns:min(560px,84%);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:34px 24px 20px;margin:0 -24px;scrollbar-width:none}
-  .track::-webkit-scrollbar{display:none}
-  .frame{scroll-snap-align:center;background:#fff;border-radius:var(--r);padding:14px;border:1px solid var(--line);transition:opacity .3s,transform .3s var(--ease)}
-  .frame.dim{opacity:.28;transform:scale(.97)}
-  .frame img{border-radius:10px;width:100%;height:auto;aspect-ratio:600/343;cursor:zoom-in}
-  .frame p{font-size:15px;color:var(--muted);padding:12px 4px 2px}
-  .frame p b{color:var(--dark)}
-  .sb-nav{display:flex;align-items:center;gap:14px}
-  .round{width:46px;height:46px;border-radius:50%;border:2px solid var(--dark);display:grid;place-items:center;transition:.2s}
-  .round:hover{background:var(--dark);color:var(--bg)}
-  .round svg{width:18px;height:18px}
-  .dots{display:flex;gap:6px}
-  .dots button{width:9px;height:9px;border-radius:9px;background:var(--line);transition:.3s var(--ease)}
-  .dots button.on{width:28px;background:var(--acc)}
+  /* progetto */
+  .intro{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);margin-top:72px;border-top:1px solid var(--ink)}
+  .pillar{padding:34px 34px 10px 0;border-right:1px solid var(--line)}
+  .pillar + .pillar{padding-left:34px}
+  .pillar:last-child{border-right:0}
+  .pillar small{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--champ-t)}
+  .pillar h3{font-size:34px;margin:10px 0 12px}
+  .pillar p{color:var(--stone);font-weight:300}
 
   /* consegne */
-  .timeline{position:relative;margin-top:44px;padding-left:44px}
-  .timeline::before{content:"";position:absolute;left:13px;top:8px;bottom:8px;width:2px;background:var(--line)}
-  .timeline .fill{position:absolute;left:13px;top:8px;width:2px;background:var(--acc);height:0;transition:height .2s linear}
-  .del{position:relative;background:var(--card);border-radius:var(--r);padding:30px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:start;margin-bottom:22px;transition:transform .3s var(--ease),box-shadow .3s}
-  .del:hover{transform:translateY(-3px);box-shadow:0 20px 40px -24px rgba(31,42,36,.4)}
-  .del::before{content:"";position:absolute;left:-40px;top:34px;width:20px;height:20px;border-radius:50%;background:var(--bg);border:3px solid var(--acc)}
-  .del.done::before{background:var(--acc)}
-  .del .num{font-family:"DM Serif Display",serif;font-size:18px;color:var(--acc-t)}
-  .del h3{font-size:26px;margin:2px 0 4px}
-  .del .when{font-size:14px;color:var(--muted);margin-bottom:12px}
-  .del p{color:var(--muted);font-size:16px;max-width:580px}
-  .del ul.kpi{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin-top:14px}
-  .del ul.kpi li{font-size:13px;font-weight:500;background:var(--bg);border:1px solid var(--line);padding:4px 11px;border-radius:999px}
-  .del .links{display:flex;flex-direction:column;gap:8px;min-width:230px}
-  .badge{display:inline-block;font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--acc);color:#fff;margin-left:10px;vertical-align:middle;animation:pulse 2s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(181,83,46,.5)}70%{box-shadow:0 0 0 10px rgba(181,83,46,0)}100%{box-shadow:0 0 0 0 rgba(181,83,46,0)}}
+  #consegne{background:var(--paper)}
+  .dels{margin-top:56px}
+  .del{display:grid;grid-template-columns:140px 1fr 270px;gap:40px;padding:52px 0;border-top:1px solid var(--line);align-items:start}
+  .del:last-child{border-bottom:1px solid var(--line)}
+  .del .num{font-family:var(--serif);font-size:96px;line-height:.8;color:transparent;-webkit-text-stroke:1px var(--ink);transition:color .4s}
+  .del:hover .num{color:var(--ink)}
+  .del h3{font-size:clamp(30px,3.4vw,40px);margin-bottom:12px}
+  .del .when{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--champ-t);margin-bottom:14px}
+  .del p{color:var(--stone);font-weight:300;max-width:560px}
+  .del ul{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;margin-top:18px;font-size:13px}
+  .del ul li::before{content:"— ";color:var(--champ-t)}
+  .del .links{display:flex;flex-direction:column;gap:10px}
+  .del .links .btn{justify-content:space-between}
+  .badge{display:inline-flex;align-items:center;gap:8px;margin-left:14px}
+  .badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--champ);animation:blink 1.6s ease-in-out infinite}
+  @keyframes blink{50%{opacity:.25}}
 
   /* team */
-  .team{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
-  .member{background:var(--card);border-radius:var(--r);overflow:hidden;transition:transform .3s var(--ease)}
-  .member:hover{transform:translateY(-4px) rotate(-.6deg)}
-  .member .ph{aspect-ratio:4/4;overflow:hidden;background:var(--line)}
-  .member img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;filter:grayscale(.35);transition:filter .4s,transform .6s var(--ease)}
-  .member:hover img{filter:none;transform:scale(1.05)}
-  .member b{display:block;font-size:17px;padding:14px 18px 16px}
+  .team{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:56px}
+  .member .ph{aspect-ratio:3/4;overflow:hidden;background:var(--line)}
+  .member img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;filter:grayscale(1) contrast(1.05);transition:filter .6s,transform .9s var(--ease)}
+  .member:hover img{filter:grayscale(0);transform:scale(1.04)}
+  .member b{display:block;font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.2;margin-top:14px}
 
-  footer{background:var(--dark);color:var(--soft);font-size:14px;padding:36px 0}
+  footer{background:var(--ink);color:#8E877B;font-size:12px;letter-spacing:.18em;text-transform:uppercase;padding:44px 0}
   footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-  footer img{height:22px;filter:invert(93%) sepia(8%) saturate(300%) hue-rotate(340deg)}
+  footer img{height:20px;filter:invert(1)}
 
-  /* dialogs */
-  dialog{margin:auto;border:0;border-radius:22px;padding:0;background:var(--card);width:min(1000px,94vw);height:min(88vh,1100px);box-shadow:0 40px 120px -20px rgba(0,0,0,.6)}
-  dialog.img{height:auto;width:min(1100px,94vw);background:#fff}
-  dialog::backdrop{background:rgba(15,21,18,.72);backdrop-filter:blur(4px)}
-  dialog[open]{animation:in .3s var(--ease)}
-  .dlg{display:flex;flex-direction:column;height:100%}
-  .dlg header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px 12px 22px;border-bottom:1px solid var(--line)}
-  .dlg header b{font-size:16px}
-  .dlg header div{display:flex;gap:8px}
-  .dlg header .btn{padding:8px 14px;font-size:14px}
-  .dlg iframe{flex:1;border:0;width:100%;background:#525659}
-  .dlg img{width:100%;height:auto}
-
-  /* reveal */
-  .js .rv{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .js .rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
   .js .rv.in{opacity:1;transform:none}
 
-  @media (max-width:960px){
-    .demo{grid-template-columns:1fr}
-    .tabs{flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px;padding:0 24px 4px;scrollbar-width:none}
-    .tab{flex:0 0 230px;scroll-snap-align:start}
-    .tab:hover{transform:none}
-    .stage{grid-template-columns:1fr;justify-items:center;padding:28px 20px}
-    .stats .wrap{grid-template-columns:repeat(3,1fr)}
+  @media (max-width:980px){
+    .team{grid-template-columns:repeat(3,1fr)}
+    .del{grid-template-columns:90px 1fr;gap:28px}
+    .del .links{grid-column:2}
+    .del .num{font-size:64px}
+    .intro{grid-template-columns:1fr;gap:20px}
   }
   @media (max-width:820px){
-    nav ul{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;background:var(--bg);padding:12px 16px 18px;border-bottom:1px solid var(--line)}
+    nav ul{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;background:var(--ivory);padding:8px 28px 22px;border-bottom:1px solid var(--line)}
     nav.open ul{display:flex}
-    nav ul a{display:block;padding:12px 14px}
+    nav ul a{display:block;padding:14px 0}
     .burger{display:grid}
-    .brand img.word{display:none}
-    .hero .wrap{grid-template-columns:1fr;padding:64px 24px 72px}
-    .mannequin{display:none}
-    section{padding:72px 0}
-    .team{grid-template-columns:1fr 1fr}
-    .del{grid-template-columns:1fr;gap:18px;padding:24px}
-    .del .links{min-width:0}
-    .timeline{padding-left:30px}
-    .timeline::before,.timeline .fill{left:7px}
-    .del::before{left:-31px;width:16px;height:16px}
+    .hero .wrap{grid-template-columns:1fr;min-height:0;padding-top:72px;padding-bottom:80px}
+    .figure{display:none}
+    section{padding:84px 0}
     .stats .wrap{grid-template-columns:repeat(2,1fr)}
-    .stats .stat:last-child{grid-column:span 2}
+    .stat{border-left:0;border-top:1px solid var(--line)}
+    .stat:nth-child(odd){border-left:1px solid var(--line)}
+    .stat:first-child{grid-column:span 2;border:0}
+    .pillars{grid-template-columns:1fr}
+    .pillar,.pillar + .pillar{padding:30px 0;border-right:0;border-bottom:1px solid var(--line)}
+    .del{grid-template-columns:1fr;gap:18px;padding:40px 0}
+    .del .links{grid-column:auto}
+    .team{grid-template-columns:repeat(2,1fr)}
   }
-  @media (max-width:420px){
-    .wrap{padding:0 16px}
-    .track{margin:0 -16px;padding:28px 16px 16px}
-    .tabs{margin:0 -16px;padding:0 16px 4px}
-    .phone{width:100%;max-width:280px}
-    .team{grid-template-columns:1fr 1fr;gap:12px}
-    .member b{font-size:15px;padding:10px 12px 12px}
-  }
+  @media (max-width:420px){ .wrap{padding:0 16px} nav ul{padding:8px 16px 22px} }
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
     .js .rv{opacity:1;transform:none}
@@ -259,10 +169,9 @@
 
 <nav id="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Relook, torna su"><img class="icon" src="assets/logo-icon.png" alt=""><img class="word" src="assets/logo-word.png" alt="Relook"></a>
+    <a class="brand" href="#top" aria-label="Relook, torna su"><img src="assets/logo-word.png" alt="Relook"></a>
     <ul id="menu">
       <li><a href="#progetto">Il progetto</a></li>
-      <li><a href="#storyboard">Storyboard</a></li>
       <li><a href="#consegne">Consegne</a></li>
       <li><a href="#gruppo">Il gruppo</a></li>
     </ul>
@@ -274,155 +183,45 @@
   <div class="wrap">
     <div>
       <p class="eyebrow rv">Fondamenti di HCI · Politecnico di Milano</p>
-      <h1 class="rv">Relook: <i>meno caos, più stile</i></h1>
-      <p class="sub rv">Un nuovo look senza stravolgere il guardaroba: riscoprire e combinare i vestiti che si hanno già, comprare in modo consapevole e dare una seconda vita ai capi inutilizzati.</p>
+      <h1 class="rv">Meno caos,<br><em>più stile.</em></h1>
+      <p class="sub rv">Relook: un nuovo look senza stravolgere il guardaroba. Riscoprire e combinare i vestiti che si hanno già, comprare in modo consapevole e dare una seconda vita ai capi inutilizzati.</p>
       <div class="cta rv">
-        <a class="btn light fill" href="#progetto">Prova la demo</a>
-        <a class="btn light" href="#consegne">Vedi le consegne</a>
+        <a class="btn champ" href="#consegne">Le consegne</a>
+        <a class="btn ghost" href="#progetto">Il progetto</a>
       </div>
       <p class="meta rv">Gruppo Nexus · a.a. 2026/27</p>
     </div>
-    <div class="mannequin rv" aria-hidden="true">
-      <img src="assets/logo-icon.png" alt="">
-      <span class="tag t1"><b>☀</b> Outfit del giorno</span>
-      <span class="tag t2">Ce l’ho già? <b>✓</b></span>
-      <span class="tag t3"><b>↺</b> Seconda vita</span>
+    <div class="figure rv" aria-hidden="true">
+      <svg viewBox="22 8 28 56"><defs><linearGradient id="g" x1="0" y1="0" x2=".4" y2="1"><stop offset="0" stop-color="#EBDDC2"/><stop offset=".55" stop-color="#C9AE82"/><stop offset="1" stop-color="#957A52"/></linearGradient></defs><path fill="url(#g)" d="M46.34,59.69v1.02h-20.35v-1.02c2.68-.06,4.88-2.01,5.22-4.46.29-2.07-.8-4.19-2.75-5.26,0,0-.12-.03-.15-.06-.09-.07-.1-.19-.1-.25-.04-.56-.06-.84-.03-1.16-.05-3.51-.05-6.12-.01-6.91.02-.37.06-.71.06-.71.04-.34.1-.7.28-1.47.17-.71.25-1.06.37-1.47.27-.89.37-.96.66-1.92.1-.34.23-.76.35-1.32.04-.21.16-.84.23-1.68.06-.9.03-1.6,0-1.91-.07-.97-.23-1.69-.33-2.18-.1-.43-.23-.9-.51-1.85-.17-.59-.36-1.22-.61-2.01-.44-1.38-.47-1.29-.75-2.2-.34-1.12-.14-.75-.62-2.62-.24-.95-.39-1.42-.13-1.86.12-.21.3-.35.78-.58.99-.48,1.56-.53,2.55-.83.87-.27,1.45-.45,2.08-.91.48-.35.98-.7,1.22-1.34.14-.36.16-.89.2-1.96,0-.33.01-.59.01-.77.3-.09.63-.17.97-.23.41-.07.81-.1,1.19-.11.38,0,.78.05,1.19.11.35.06.67.14.97.23,0,.18,0,.45.01.77.04,1.07.06,1.6.2,1.96.24.64.74.99,1.22,1.34.64.46,1.21.64,2.08.91.99.3,1.57.36,2.55.83.48.23.66.38.78.58.26.44.12.91-.13,1.86-.48,1.87-.28,1.5-.62,2.62-.28.91-.31.82-.75,2.2-.26.8-.44,1.42-.61,2.01-.28.95-.41,1.43-.51,1.85-.11.49-.27,1.21-.33,2.18-.02.31-.06,1.02,0,1.91.06.84.18,1.47.23,1.68.12.56.24.98.35,1.32.29.96.39,1.03.66,1.92.13.41.2.77.37,1.47.18.77.24,1.12.28,1.47,0,0,.04.34.06.71.04.8.04,3.4-.01,6.91.03.32,0,.6-.03,1.16,0,.06-.01.18-.1.25-.03.03-.15.06-.15.06-1.95,1.08-3.04,3.2-2.75,5.26.34,2.45,2.54,4.4,5.22,4.46Z"/></svg>
+      <span>Relook · 2026</span>
     </div>
   </div>
 </header>
 
 <div class="stats" aria-label="Il progetto in numeri">
   <div class="wrap">
-    <div class="stat"><b data-count="7">7</b><span>interviste</span></div>
-    <div class="stat"><b data-count="408">408</b><span>risposte al questionario</span></div>
-    <div class="stat"><b data-count="2">2</b><span>focus group</span></div>
-    <div class="stat"><b data-count="4">4</b><span>personas</span></div>
-    <div class="stat"><b data-count="3">3</b><span>task progettati</span></div>
+    <div class="stat rv"><b data-count="408">408</b><span>Risposte al questionario</span></div>
+    <div class="stat rv"><b data-count="7">7</b><span>Interviste</span></div>
+    <div class="stat rv"><b data-count="2">2</b><span>Focus group</span></div>
+    <div class="stat rv"><b data-count="4">4</b><span>Personas</span></div>
+    <div class="stat rv"><b data-count="3">3</b><span>Task</span></div>
   </div>
 </div>
 
 <main>
   <section id="progetto">
     <div class="wrap">
-      <p class="eyebrow rv">Il progetto</p>
-      <h2 class="rv">«Non ho niente da mettere»</h2>
-      <p class="lead rv">Aprire un armadio pieno e non trovare nulla capita a quasi tutti. Spesso non mancano i vestiti: manca una visione d’insieme. Relook la offre e accompagna tre momenti. Provali qui sotto.</p>
-
-      <div class="demo rv">
-        <div class="tabs" role="tablist" aria-label="I tre momenti di Relook">
-          <button class="tab" role="tab" id="tab-1" aria-controls="p-1" aria-selected="true"><small>T1</small><b>Scegliere</b><p>Outfit pronti con i capi disponibili, in base a meteo, capi a lavare, occasione e dress code.</p></button>
-          <button class="tab" role="tab" id="tab-2" aria-controls="p-2" aria-selected="false" tabindex="-1"><small>T2</small><b>Comprare</b><p>Prima dell’acquisto: hai già qualcosa di simile? Con cosa si abbinerà?</p></button>
-          <button class="tab" role="tab" id="tab-3" aria-controls="p-3" aria-selected="false" tabindex="-1"><small>T3</small><b>Lasciar andare</b><p>I capi fermi da tempo tornano negli outfit o vengono venduti, donati o regalati.</p></button>
-        </div>
-
-        <div class="stage">
-          <!-- T1 -->
-          <div class="panel on" id="p-1" role="tabpanel" aria-labelledby="tab-1" style="display:contents">
-            <div class="phone">
-              <p class="ph-title" id="t1-title">Oggi · 9° → 16°</p>
-              <p class="ph-sub" id="t1-sub">Pioggia in serata · Università</p>
-              <div class="grid2" id="t1-grid" aria-live="polite"></div>
-              <button class="ph-btn" id="t1-wear">Indosso questo</button>
-              <span class="toast" id="t1-toast">Bel look! ✓</span>
-            </div>
-            <div class="controls">
-              <h3>L’outfit del giorno, già pronto</h3>
-              <p>Relook combina solo capi disponibili: niente camicia blu se è a lavare. Cambia meteo e occasione e guarda come si adatta.</p>
-              <label>Meteo</label>
-              <div class="chips" data-group="meteo">
-                <button class="chip" aria-pressed="false" data-v="sole">☀ Sole</button>
-                <button class="chip" aria-pressed="true" data-v="pioggia">☂ Pioggia la sera</button>
-                <button class="chip" aria-pressed="false" data-v="freddo">❄ Freddo</button>
-              </div>
-              <label>Occasione</label>
-              <div class="chips" data-group="occ">
-                <button class="chip" aria-pressed="true" data-v="uni">Università</button>
-                <button class="chip" aria-pressed="false" data-v="aperitivo">Aperitivo</button>
-                <button class="chip" aria-pressed="false" data-v="colloquio">Colloquio</button>
-              </div>
-              <label>Capi a lavare</label>
-              <div class="chips" data-group="wash" data-multi>
-                <button class="chip" aria-pressed="true" data-v="camicia">Camicia blu</button>
-                <button class="chip" aria-pressed="false" data-v="jeans">Jeans scuri</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- T2 -->
-          <div class="panel" id="p-2" role="tabpanel" aria-labelledby="tab-2" hidden>
-            <div class="phone">
-              <p class="ph-title">Nuovo capo</p>
-              <p class="ph-sub">Giacca verde oliva · in negozio</p>
-              <div class="shop">📷 foto scattata</div>
-              <button class="ph-btn" id="t2-check">Ce l’ho già qualcosa di simile?</button>
-              <div class="similar" id="t2-sim" aria-live="polite">
-                <p class="ph-title">Hai già 2 capi simili</p>
-                <div class="sim"><i style="--c:#8B8257"></i><div>Giacca kaki<br><small>casa dei tuoi</small></div></div>
-                <div class="sim"><i style="--c:#4F5B3A"></i><div>Bomber verde<br><small>Milano</small></div></div>
-                <p class="verdict">6 outfit possibili con quello che hai</p>
-                <div class="ph-row"><button class="ph-btn ghost" data-t2="lascio">Lascio</button><button class="ph-btn" data-t2="compro">Compro</button></div>
-              </div>
-              <span class="toast" id="t2-toast"></span>
-            </div>
-            <div class="controls">
-              <h3>Prima di comprare, uno sguardo all’armadio</h3>
-              <p>Una foto in negozio e Relook confronta il capo con ciò che possiedi già, anche quello rimasto a casa dei genitori. Decidi tu, ma informato.</p>
-            </div>
-          </div>
-
-          <!-- T3 -->
-          <div class="panel" id="p-3" role="tabpanel" aria-labelledby="tab-3" hidden>
-            <div class="phone">
-              <p class="ph-title">Cambio di stagione</p>
-              <p class="ph-sub">8 capi fermi da più di un anno. Tocca per smistarli.</p>
-              <div class="closet" id="t3-closet"></div>
-              <button class="ph-btn ghost" id="t3-reset">Ricomincia</button>
-            </div>
-            <div class="controls">
-              <h3>Una seconda vita ai capi dimenticati</h3>
-              <p>Ogni tocco cambia il destino del capo: tengo → vendo → dono → regalo. In pochi minuti l’armadio torna leggero.</p>
-              <div class="tally" aria-live="polite">
-                <div><b id="n-tengo">0</b><span>tengo</span></div>
-                <div><b id="n-vendo">0</b><span>vendo</span></div>
-                <div><b id="n-dono">0</b><span>dono</span></div>
-                <div><b id="n-regalo">0</b><span>regalo</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="storyboard">
-    <div class="wrap">
-      <div class="sb-head">
+      <div class="intro">
         <div>
-          <p class="eyebrow rv">Storyboard</p>
-          <h2 class="rv">Il guardaroba di Matteo</h2>
-          <p class="lead rv">Una settimana, tre task. Scorri le vignette o filtra per task.</p>
+          <p class="eyebrow rv">Il progetto</p>
+          <h2 class="rv">«Non ho niente<br><em>da mettere</em>»</h2>
         </div>
-        <div class="sb-filter rv" id="sb-filter">
-          <button aria-pressed="true" data-f="all">Tutte</button>
-          <button aria-pressed="false" data-f="T1">T1 · Scegliere</button>
-          <button aria-pressed="false" data-f="T2">T2 · Comprare</button>
-          <button aria-pressed="false" data-f="T3">T3 · Lasciar andare</button>
-        </div>
+        <p class="lead rv">Aprire un armadio pieno e non trovare nulla capita a quasi tutti. Spesso non mancano i vestiti: manca una visione d’insieme. Relook la offre e accompagna tre momenti.</p>
       </div>
-      <div class="track" id="track" tabindex="0" aria-label="Vignette dello storyboard">
-        <figure class="frame" data-t="T1"><img src="assets/storyboard/1.jpg" alt="Vignetta 1: Matteo davanti all'armadio pieno, pensa: sempre le stesse cose" loading="lazy" width="600" height="343"><p><b>Giovedì, 8:05.</b> Lezione alle 9, aperitivo alle 19. La camicia blu che voleva mettere è a lavare. L’armadio è pieno, ma «non ha niente da mettere».</p></figure>
-        <figure class="frame" data-t="T1"><img src="assets/storyboard/2.jpg" alt="Vignetta 2: l'app mostra meteo e outfit, Matteo: ok, questo funziona" loading="lazy" width="600" height="343"><p>Apre <b>Relook</b>: il meteo dell’intera giornata e un outfit fatto solo di capi disponibili, con un impermeabile per la sera.</p></figure>
-        <figure class="frame" data-t="T1"><img src="assets/storyboard/3.jpg" alt="Vignetta 3: sotto la pioggia, gli amici gli dicono: bel look" loading="lazy" width="600" height="343"><p><b>Alle 19 piove</b>, ma lui è coperto. All’aperitivo nessuna battuta sul suo outfit: esce di casa senza ansia.</p></figure>
-        <figure class="frame" data-t="T2"><img src="assets/storyboard/4.jpg" alt="Vignetta 4: in negozio fotografa una giacca, pensa: ce l'ho già qualcosa di simile?" loading="lazy" width="600" height="343"><p><b>Sabato, in negozio.</b> Vede una giacca verde oliva come quella di un post su Instagram. Invece di comprarla d’istinto, la fotografa con Relook.</p></figure>
-        <figure class="frame" data-t="T2"><img src="assets/storyboard/5.jpg" alt="Vignetta 5: l'app mostra due capi simili, uno a casa dei genitori" loading="lazy" width="600" height="343"><p>Relook confronta la giacca con il suo armadio: ha già una giacca kaki molto simile, rimasta <b>a casa dei genitori</b>.</p></figure>
-        <figure class="frame" data-t="T2"><img src="assets/storyboard/6.jpg" alt="Vignetta 6: ritrova la giacca kaki: ecco dov'era" loading="lazy" width="600" height="343"><p>Non la compra. Il weekend dopo, a casa dei genitori, <b>ritrova la giacca kaki</b> e la riporta a Milano: Relook ha già pronti gli outfit per indossarla.</p></figure>
-        <figure class="frame" data-t="T3"><img src="assets/storyboard/7.jpg" alt="Vignetta 7: notifica di cambio di stagione, 8 capi fermi da più di un anno" loading="lazy" width="600" height="343"><p><b>1 ottobre, cambio di stagione.</b> Relook gli segnala 8 capi che non mette da più di un anno, invece di lasciarli dimenticati in fondo all’armadio.</p></figure>
-        <figure class="frame" data-t="T3"><img src="assets/storyboard/8.jpg" alt="Vignetta 8: vendo 3, dono 2, regalo 1, tengo 2" loading="lazy" width="600" height="343"><p>In pochi minuti decide il destino di ogni capo: 2 tornano negli outfit, 3 in vendita, 2 da donare, 1 al fratello. <b>Meno caos, più stile.</b></p></figure>
-      </div>
-      <div class="sb-nav">
-        <button class="round" id="prev" aria-label="Vignetta precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button class="round" id="next" aria-label="Vignetta successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
-        <div class="dots" id="dots"></div>
+      <div class="pillars">
+        <div class="pillar rv"><small>i.</small><h3>Scegliere</h3><p>Outfit pronti con i capi disponibili, in base a meteo, capi a lavare, occasione e dress code.</p></div>
+        <div class="pillar rv"><small>ii.</small><h3>Comprare</h3><p>Prima dell’acquisto: hai già qualcosa di simile? Con cosa si abbinerà?</p></div>
+        <div class="pillar rv"><small>iii.</small><h3>Lasciar andare</h3><p>I capi fermi da tempo tornano negli outfit o vengono venduti, donati o regalati.</p></div>
       </div>
     </div>
   </section>
@@ -430,67 +229,64 @@
   <section id="consegne">
     <div class="wrap">
       <p class="eyebrow rv">Consegne</p>
-      <h2 class="rv">Il percorso del progetto</h2>
+      <h2 class="rv">Il percorso <em>del progetto</em></h2>
 
-      <div class="timeline" id="timeline">
-        <div class="fill" id="tl-fill"></div>
-
-        <article class="del done rv">
-          <div>
-            <span class="num">01</span>
-            <h3 class="serif">Needfinding</h3>
-            <p class="when">Ottobre 2026</p>
-            <p>7 interviste (5 utenti target, di cui 2 estremi, e 2 esperte) e un questionario con 408 risposte sulle abitudini di abbigliamento. Ne emergono 7 bisogni e le prime idee.</p>
-            <ul class="kpi"><li>7 interviste</li><li>408 risposte</li><li>7 bisogni</li></ul>
-          </div>
-          <div class="links">
-            <button class="btn primary" data-pdf="consegne/C1-needfinding.pdf" data-title="C1 · Needfinding">Apri le slide</button>
-            <a class="btn" href="consegne/C1-needfinding.pdf" download>Scarica PDF</a>
-          </div>
-        </article>
-
-        <article class="del done rv">
-          <div>
-            <span class="num">02</span>
-            <h3 class="serif">Raffinamento e focus</h3>
-            <p class="when">Ottobre 2026</p>
-            <p>Due focus group, quattro personas con i loro scenari, brainstorming e votazione delle soluzioni, nome e value proposition.</p>
-            <ul class="kpi"><li>2 focus group</li><li>4 personas</li><li>Value proposition</li></ul>
-          </div>
-          <div class="links">
-            <button class="btn primary" data-pdf="consegne/C2-raffinamento-e-focus.pdf" data-title="C2 · Raffinamento e focus">Apri le slide</button>
-            <a class="btn" href="consegne/C2-raffinamento-e-focus.pdf" download>Scarica PDF</a>
-          </div>
-        </article>
-
+      <div class="dels">
+        <!-- COMPITO 1 -->
         <article class="del rv">
+          <span class="num">01</span>
           <div>
-            <span class="num">03</span>
-            <h3 class="serif">Task, storyboard e primi prototipi <span class="badge">In corso</span></h3>
-            <p class="when">Scadenza 16 novembre 2026</p>
-            <p>Tre task con HTA e TDH, uno storyboard a fumetto e due prototipi low-fidelity: app mobile e agente conversazionale. Scelta finale: l’app mobile.</p>
-            <ul class="kpi"><li>3 task</li><li>HTA + TDH</li><li>2 prototipi lo-fi</li></ul>
+            <p class="when">Ottobre 2026</p>
+            <h3>Needfinding</h3>
+            <p>7 interviste (5 utenti target, di cui 2 estremi, e 2 esperte) e un questionario con 408 risposte sulle abitudini di abbigliamento. Ne emergono 7 bisogni e le prime idee.</p>
+            <ul><li>Interviste</li><li>Questionario</li><li>Bisogni</li></ul>
           </div>
           <div class="links">
-            <!-- Quando il PDF delle slide è pronto: caricarlo in consegne/ e togliere la classe "todo" -->
-            <button class="btn primary todo" data-pdf="consegne/C3-task-storyboard-prototipi.pdf" data-title="C3 · Task, storyboard e prototipi">Slide (in arrivo)</button>
-            <button class="btn" data-pdf="consegne/C3-storyboard.pdf" data-title="C3 · Storyboard">Apri lo storyboard</button>
-            <!-- Inserire i link Figma in href e togliere la classe "todo" -->
-            <a class="btn todo" href="#">Prototipo 1 · Figma</a>
-            <a class="btn todo" href="#">Prototipo 2 · Figma</a>
+            <a class="btn dark" href="consegne/C1-needfinding.pdf" target="_blank" rel="noopener">Slide · PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <!-- COMPITO 2 -->
+        <article class="del rv">
+          <span class="num">02</span>
+          <div>
+            <p class="when">Ottobre 2026</p>
+            <h3>Raffinamento e focus</h3>
+            <p>Due focus group, quattro personas con i loro scenari, brainstorming e votazione delle soluzioni, nome e value proposition.</p>
+            <ul><li>Focus group</li><li>Personas</li><li>Value proposition</li></ul>
+          </div>
+          <div class="links">
+            <a class="btn dark" href="consegne/C2-raffinamento-e-focus.pdf" target="_blank" rel="noopener">Slide · PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <!-- COMPITO 3 -->
+        <article class="del rv">
+          <span class="num">03</span>
+          <div>
+            <p class="when">Scadenza 16 novembre 2026 <span class="badge">In corso</span></p>
+            <h3>Task, storyboard e primi prototipi</h3>
+            <p>Tre task con HTA e TDH, uno storyboard a fumetto e due prototipi low-fidelity: un’app mobile e un’esperienza per occhiali see-through.</p>
+            <ul><li>HTA e TDH</li><li>Storyboard</li><li>Prototipi lo-fi</li></ul>
+          </div>
+          <div class="links">
+            <a class="btn dark" href="https://www.figma.com/deck/0wUiyXxrHY3LhhLKQuwzn2" target="_blank" rel="noopener">Slide · Figma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            <a class="btn line" href="consegne/C3-storyboard.pdf" target="_blank" rel="noopener">Storyboard · PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            <a class="btn line" href="https://www.figma.com/design/xbfyBHTHSdRDaA2eRKqXtK/Relook-wireframe-design?node-id=36-4" target="_blank" rel="noopener">Prototipo mobile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            <a class="btn line" href="https://www.figma.com/design/xbfyBHTHSdRDaA2eRKqXtK/Relook-wireframe-design?node-id=36-5" target="_blank" rel="noopener">Prototipo occhiali <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
           </div>
         </article>
 
         <!--
           Per aggiungere una nuova consegna, copiare un blocco <article class="del"> qui sopra
-          e cambiare numero, titolo, data, descrizione e link.
-          I PDF vanno nella cartella "consegne/". Aggiungere la classe "done" quando è consegnata.
+          e cambiare numero, data, titolo, descrizione e link.
+          I PDF vanno nella cartella "consegne/". Link non ancora pronto: class="btn line todo".
         -->
       </div>
     </div>
   </section>
 
-  <section id="gruppo" style="padding-top:0">
+  <section id="gruppo">
     <div class="wrap">
       <p class="eyebrow rv">Il gruppo</p>
       <h2 class="rv">Nexus</h2>
@@ -509,180 +305,45 @@
 <footer>
   <div class="wrap">
     <img src="assets/logo-word.png" alt="Relook">
-    <span>Gruppo Nexus · Fondamenti di HCI · Politecnico di Milano · a.a. 2026/27</span>
+    <span>Gruppo Nexus · Fondamenti di HCI · Politecnico di Milano · 2026/27</span>
   </div>
 </footer>
 
-<dialog id="pdf" aria-label="Anteprima PDF">
-  <div class="dlg">
-    <header><b id="pdf-title"></b><div><a class="btn" id="pdf-open" target="_blank" rel="noopener">Apri in una scheda</a><button class="btn primary" data-close>Chiudi</button></div></header>
-    <iframe id="pdf-frame" title="Anteprima PDF"></iframe>
-  </div>
-</dialog>
-<dialog id="zoom" class="img" aria-label="Vignetta ingrandita">
-  <div class="dlg">
-    <header><b id="zoom-title"></b><div><button class="btn primary" data-close>Chiudi</button></div></header>
-    <img id="zoom-img" alt="">
-  </div>
-</dialog>
-
 <script>
 (() => {
-  const $ = (s, r = document) => r.querySelector(s);
-  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* nav: progress, ombra, menu mobile, sezione attiva */
   const nav = $('#nav'), bar = $('#progress'), burger = $('#burger');
   const onScroll = () => {
     const h = document.documentElement;
     bar.style.transform = `scaleX(${h.scrollTop / (h.scrollHeight - h.clientHeight || 1)})`;
     nav.classList.toggle('scrolled', h.scrollTop > 10);
-    const tl = $('#timeline'), r = tl.getBoundingClientRect();
-    const p = Math.min(1, Math.max(0, (innerHeight * .6 - r.top) / r.height));
-    $('#tl-fill').style.height = `calc(${p * 100}% - 16px)`;
   };
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
-  burger.onclick = () => { const o = nav.classList.toggle('open'); burger.setAttribute('aria-expanded', o); };
-  $$('#menu a').forEach(a => a.onclick = () => { nav.classList.remove('open'); burger.setAttribute('aria-expanded', false); });
+
+  burger.onclick = () => burger.setAttribute('aria-expanded', nav.classList.toggle('open'));
+  $$('#menu a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); burger.setAttribute('aria-expanded', false); }));
+
   const links = $$('#menu a');
   const spy = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) links.forEach(a => a.classList.toggle('active', a.hash === '#' + e.target.id));
   }), { rootMargin: '-45% 0px -50% 0px' });
-  $$('main section').forEach(s => spy.observe(s));
+  $$('#top, main section').forEach(s => spy.observe(s));
 
-  /* reveal + contatori */
   const count = el => {
-    const n = +el.dataset.count, t0 = performance.now(), d = 1200;
-    const step = t => { const k = Math.min(1, (t - t0) / d); el.textContent = Math.round(n * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); };
+    const n = +el.dataset.count, t0 = performance.now();
+    const step = t => { const k = Math.min(1, (t - t0) / 1400); el.textContent = Math.round(n * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); };
     requestAnimationFrame(step);
   };
   const rv = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
     e.target.classList.add('in');
-    if (e.target.dataset.count && !reduce) count(e.target);
+    const c = e.target.querySelector('[data-count]');
+    if (c && !reduce) count(c);
     rv.unobserve(e.target);
-  }), { threshold: .15 });
-  $$('.rv, [data-count]').forEach((el, i) => { el.style.transitionDelay = (i % 6) * 60 + 'ms'; rv.observe(el); });
-
-  /* tabs demo (frecce sinistra/destra tra le tab) */
-  const tabs = $$('.tab');
-  const select = t => tabs.forEach(x => {
-    const on = x === t, p = $('#' + x.getAttribute('aria-controls'));
-    x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
-    p.hidden = !on; p.style.display = on ? 'contents' : 'none';
-  });
-  tabs.forEach((t, i) => {
-    t.onclick = () => select(t);
-    t.onkeydown = e => {
-      const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
-      if (d) { e.preventDefault(); const n = tabs[(i + d + tabs.length) % tabs.length]; select(n); n.focus(); }
-    };
-  });
-  const toast = (el, msg) => { if (msg) el.textContent = msg; el.classList.add('show'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 1800); };
-
-  /* T1: outfit del giorno */
-  const C = { navy:'#2E3D5C', blu:'#3F6FA8', beige:'#CDB894', bianco:'#ECE8E1', nero:'#24262A', grigio:'#8F948F', cammello:'#B48A5A', verde:'#56664A', bordeaux:'#6E2A35', kaki:'#8B8257' };
-  const state = { meteo: 'pioggia', occ: 'uni', wash: new Set(['camicia']) };
-  const outfit = () => {
-    const w = state.wash, o = state.occ, m = state.meteo;
-    const top = o === 'colloquio' ? (w.has('camicia') ? ['Camicia bianca', 'bianco'] : ['Camicia blu', 'blu'])
-              : o === 'aperitivo' ? ['Maglia a coste', 'bordeaux']
-              : m === 'freddo' ? ['Maglione girocollo', 'navy'] : (w.has('camicia') ? ['T-shirt + overshirt', 'kaki'] : ['Camicia blu', 'blu']);
-    const bottom = o === 'colloquio' ? ['Pantaloni sartoriali', 'grigio'] : w.has('jeans') ? ['Chino beige', 'beige'] : ['Jeans scuri', 'navy'];
-    const shoes = o === 'colloquio' ? ['Derby in pelle', 'nero'] : m === 'pioggia' ? ['Stivaletti', 'cammello'] : ['Sneakers bianche', 'bianco'];
-    const outer = m === 'pioggia' ? ['Impermeabile (sera)', 'verde'] : m === 'freddo' ? ['Cappotto', 'cammello'] : o === 'colloquio' ? ['Blazer', 'navy'] : ['Giacca leggera', 'kaki'];
-    return [top, bottom, shoes, outer];
-  };
-  const meteoTxt = { sole: ['Oggi · 14° → 22°', 'Sereno tutto il giorno'], pioggia: ['Oggi · 9° → 16°', 'Pioggia in serata'], freddo: ['Oggi · 1° → 7°', 'Freddo secco'] };
-  const occTxt = { uni: 'Università', aperitivo: 'Aperitivo', colloquio: 'Colloquio' };
-  const grid = $('#t1-grid');
-  const renderT1 = (anim) => {
-    $('#t1-title').textContent = meteoTxt[state.meteo][0];
-    $('#t1-sub').textContent = `${meteoTxt[state.meteo][1]} · ${occTxt[state.occ]}`;
-    const html = outfit().map(([n, c]) => `<div class="item"><i style="--c:${C[c]}"></i>${n}</div>`).join('');
-    if (!anim || reduce) { grid.innerHTML = html; return; }
-    $$('.item', grid).forEach(i => i.classList.add('swap'));
-    setTimeout(() => { grid.innerHTML = html; $$('.item', grid).forEach((i, k) => { i.classList.add('swap'); setTimeout(() => i.classList.remove('swap'), 30 + k * 60); }); }, 200);
-  };
-  $$('.chips').forEach(g => g.addEventListener('click', e => {
-    const b = e.target.closest('.chip'); if (!b) return;
-    const key = g.dataset.group;
-    if ('multi' in g.dataset) {
-      const on = b.getAttribute('aria-pressed') !== 'true';
-      b.setAttribute('aria-pressed', on); on ? state[key].add(b.dataset.v) : state[key].delete(b.dataset.v);
-    } else {
-      $$('.chip', g).forEach(x => x.setAttribute('aria-pressed', x === b)); state[key] = b.dataset.v;
-    }
-    renderT1(true);
-  }));
-  $('#t1-wear').onclick = () => toast($('#t1-toast'));
-  renderT1(false);
-
-  /* T2: ce l'ho già? */
-  $('#t2-check').onclick = e => { $('#t2-sim').classList.add('on'); e.currentTarget.hidden = true; };
-  $$('[data-t2]').forEach(b => b.onclick = () => toast($('#t2-toast'), b.dataset.t2 === 'lascio' ? 'Risparmiati 89 € ✓' : 'Aggiunta all’armadio ✓'));
-
-  /* T3: smistamento */
-  const capi = [['Felpa grigia','grigio'],['Camicia a righe','blu'],['Jeans chiari','blu'],['Giubbotto','nero'],['Maglione rosso','bordeaux'],['Polo verde','verde'],['Pantaloni beige','beige'],['Sciarpa','cammello']];
-  const dest = ['', 'tengo', 'vendo', 'dono', 'regalo'];
-  const closet = $('#t3-closet');
-  const tally = () => ['tengo','vendo','dono','regalo'].forEach(d => $('#n-' + d).textContent = $$(`.cl[data-d="${d}"]`, closet).length);
-  const renderT3 = () => {
-    closet.innerHTML = capi.map(([n, c]) => `<button class="cl" data-d=""><i style="--c:${C[c]}"></i>${n}<em>—</em></button>`).join('');
-    tally();
-  };
-  closet.addEventListener('click', e => {
-    const b = e.target.closest('.cl'); if (!b) return;
-    const d = dest[(dest.indexOf(b.dataset.d) % (dest.length - 1)) + 1];
-    b.dataset.d = d; $('em', b).textContent = d; tally();
-  });
-  $('#t3-reset').onclick = renderT3;
-  renderT3();
-
-  /* storyboard carousel */
-  const track = $('#track'), frames = $$('.frame', track), dots = $('#dots');
-  frames.forEach((f, i) => {
-    const d = document.createElement('button'); d.setAttribute('aria-label', 'Vignetta ' + (i + 1));
-    d.onclick = () => go(i); dots.append(d);
-  });
-  let cur = 0;
-  const go = i => { cur = Math.max(0, Math.min(frames.length - 1, i)); frames[cur].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest', inline: 'center' }); };
-  const mark = () => {
-    const mid = track.getBoundingClientRect().left + track.clientWidth / 2;
-    let best = 0, bd = Infinity;
-    frames.forEach((f, i) => { const r = f.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid); if (d < bd) { bd = d; best = i; } });
-    cur = best; $$('button', dots).forEach((d, i) => d.classList.toggle('on', i === cur));
-  };
-  track.addEventListener('scroll', () => requestAnimationFrame(mark), { passive: true }); mark();
-  $('#prev').onclick = () => go(cur - 1);
-  $('#next').onclick = () => go(cur + 1);
-  track.onkeydown = e => { if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); } };
-  $('#sb-filter').addEventListener('click', e => {
-    const b = e.target.closest('button'); if (!b) return;
-    $$('#sb-filter button').forEach(x => x.setAttribute('aria-pressed', x === b));
-    const f = b.dataset.f;
-    frames.forEach(fr => fr.classList.toggle('dim', f !== 'all' && fr.dataset.t !== f));
-    if (f !== 'all') go(frames.findIndex(fr => fr.dataset.t === f));
-  });
-
-  /* dialog: PDF + zoom vignette */
-  const pdf = $('#pdf'), zoom = $('#zoom');
-  $$('[data-pdf]').forEach(b => b.onclick = () => {
-    // su mobile i PDF in iframe non funzionano: apro direttamente
-    if (matchMedia('(max-width: 820px)').matches) { open(b.dataset.pdf, '_blank', 'noopener'); return; }
-    $('#pdf-title').textContent = b.dataset.title;
-    $('#pdf-frame').src = b.dataset.pdf; $('#pdf-open').href = b.dataset.pdf;
-    pdf.showModal();
-  });
-  $$('.frame img').forEach((img, i) => img.onclick = () => {
-    $('#zoom-img').src = img.src; $('#zoom-img').alt = img.alt; $('#zoom-title').textContent = `Vignetta ${i + 1} di ${frames.length}`;
-    zoom.showModal();
-  });
-  [pdf, zoom].forEach(d => {
-    d.addEventListener('click', e => { if (e.target === d || e.target.closest('[data-close]')) d.close(); });
-    d.addEventListener('close', () => { if (d === pdf) $('#pdf-frame').src = 'about:blank'; });
-  });
+  }), { threshold: .12 });
+  $$('.rv').forEach((el, i) => { el.style.transitionDelay = (i % 6) * 70 + 'ms'; rv.observe(el); });
 })();
 </script>
 </body>
