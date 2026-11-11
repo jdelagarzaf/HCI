@@ -1,0 +1,7 @@
+# GitHub Pages (build legacy dal branch "web").
+# Il materiale di ricerca (audio, foto, consensi…) resta nel repo ma non viene pubblicato:
+# il sito usa solo index.html, assets/ e consegne/.
+exclude:
+  - C1
+  - C2
+  - README.md
