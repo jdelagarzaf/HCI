@@ -15,10 +15,10 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
   :root{
-    /* palette: Navy · Cream · Currant (main) · Plum · Highlight (accento) */
-    --ivory:#FFFCF7; --paper:#F8F1E7; --ink:#0D0129; --brown:#6B1937; --brown-t:#6B1937;
+    /* palette Relook: Cream · Paper · Currant · Plum · Eden · Iris · Highlight (solo su fondi scuri) */
+    --ivory:#FFFCF7; --paper:#F8F1E7; --ink:#450D1D; --brown:#6B1937; --brown-t:#6B1937;
     --plum:#450D1D; --hl:#FAE59B; --eden:#19615C; --iris:#123463; --mauve:#D08C7C;
-    --stone:#4A4458; --line:#E6DDD3;
+    --stone:#6B5458; --line:rgba(69,13,29,.12);
     --brown-l:#FAE59B; /* Highlight, solo su fondi scuri */
     --serif:"Bodoni Moda",Didot,"Bodoni 72",Georgia,serif;
     --sans:"Jost",Futura,system-ui,sans-serif;
@@ -34,6 +34,7 @@
   button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
   :focus-visible{outline:2px solid var(--brown-t);outline-offset:4px}
   ::selection{background:var(--hl);color:var(--ink)}
+  header.hero{--ink:#0D0129} /* hero 3D invariata finché non viene rifatta */
   .wrap{max-width:1280px;margin:0 auto;padding:0 var(--gutter)}
   h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.015em;font-optical-sizing:auto}
   em{font-style:italic}
@@ -117,7 +118,7 @@
   .btn.solid:hover{color:var(--ink);border-color:var(--ivory)}
   .btn.ghost{--fill:var(--ivory);border-color:rgba(255,252,247,.5);color:var(--ivory)}
   .btn.ghost:hover{color:var(--ink);border-color:var(--ivory)}
-  .btn.todo{border-style:dashed;color:var(--stone);border-color:rgba(13,1,41,.3);pointer-events:none;background:none}
+  .btn.todo{border-style:dashed;color:var(--stone);border-color:rgba(69,13,29,.3);pointer-events:none;background:none}
 
   /* voci */
   .quotes{display:grid;grid-template-columns:1fr 1fr;gap:64px 72px;margin-top:64px}
@@ -160,16 +161,16 @@
   figure img{width:100%;background:var(--line)}
   figcaption{font-size:14px;color:var(--stone);font-weight:300;margin-top:12px;max-width:60ch;padding-top:10px;border-top:1px solid var(--line)}
   .gallery .tall img{aspect-ratio:4/3;object-fit:cover;filter:saturate(.85);transition:filter .6s,transform .6s var(--ease),box-shadow .6s var(--ease)}
-  .gallery .tall:hover img{filter:saturate(1);transform:translateY(-6px);box-shadow:0 28px 40px -30px rgba(13,1,41,.55)}
+  .gallery .tall:hover img{filter:saturate(1);transform:translateY(-6px);box-shadow:0 28px 40px -30px rgba(69,13,29,.55)}
   .board{margin-top:80px}
   .board figcaption{max-width:none}
-  .board a{display:block;overflow:hidden;border:1px solid var(--line);background:#fff;transition:border-color .4s}
+  .board a{display:block;overflow:hidden;border:1px solid var(--line);background:var(--ivory);transition:border-color .4s}
   .board a:hover{border-color:var(--ink)}
   .board img{transition:transform 1s var(--ease)}
   .board a:hover img{transform:scale(1.03)}
   .sb{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:center;margin-top:112px}
-  .sb a:not(.btn){display:block;border:1px solid var(--line);background:#fff;padding:12px;transform:rotate(-1.5deg);transition:transform .5s var(--ease),box-shadow .5s var(--ease);box-shadow:0 30px 50px -35px rgba(13,1,41,.45)}
-  .sb a:not(.btn):hover{transform:rotate(0) translateY(-6px);box-shadow:0 44px 60px -36px rgba(13,1,41,.5)}
+  .sb a:not(.btn){display:block;border:1px solid var(--line);background:var(--ivory);padding:12px;transform:rotate(-1.5deg);transition:transform .5s var(--ease),box-shadow .5s var(--ease);box-shadow:0 30px 50px -35px rgba(69,13,29,.45)}
+  .sb a:not(.btn):hover{transform:rotate(0) translateY(-6px);box-shadow:0 44px 60px -36px rgba(69,13,29,.5)}
   .sb h3{font-size:clamp(32px,3.8vw,48px);margin-bottom:18px}
   .sb p{color:var(--stone);font-weight:300;max-width:46ch}
   .sb p + p{margin-top:12px}
@@ -201,7 +202,7 @@
 
   body > footer{background:var(--ink);color:rgba(255,252,247,.6);font-size:13px;letter-spacing:.04em;padding:48px 0}
   body > footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-  body > footer img{height:20px;filter:invert(1)}
+  body > footer img{height:20px}
 
   /* animazioni */
   @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
@@ -275,7 +276,7 @@
 .hero p.sub{color:#FFF6EC;font-weight:400;font-size:19px;line-height:1.6}
 .hero .meta{color:rgba(255,252,247,.72)}
 .lead,.note,.figures span{font-weight:400}
-/* ---- palette viva: Eden, Iris, Mauve ---- */
+/* ---- palette viva: Eden, Iris, Currant ---- */
 /* hero: pallini sparsi con parallasse e orbita attorno all'icona */
 .hero{position:relative;isolation:isolate}
 .orbs{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
@@ -322,12 +323,12 @@ blockquote:nth-child(odd):not(.big):hover{border-left-color:var(--eden)}
 main > section#bisogni,main > section#bisogni + section{border-top:0}
 
 /* processo */
-#processo h2::before{background:var(--mauve);height:3px}
-.sb a:not(.btn){border-color:var(--mauve)}
+#processo h2::before{background:var(--brown);height:3px}
+.sb a:not(.btn){border-color:var(--brown)}
 .board a:hover{border-color:var(--eden)}
 
 /* consegne: fondo Navy */
-#consegne{background:var(--ink);color:var(--ivory)}
+#consegne{background:#0D0129;color:var(--ivory)}
 #consegne h2::before{background:var(--hl)}
 #consegne h2 em{color:var(--mauve)}
 #consegne .lead,#consegne .note,#consegne .del p{color:rgba(255,252,247,.75)}
@@ -338,10 +339,10 @@ main > section#bisogni,main > section#bisogni + section{border-top:0}
 #consegne .del:nth-child(3):hover .num{color:var(--ivory)}
 #consegne .del:nth-child(4):hover .num{color:var(--mauve);-webkit-text-stroke-color:var(--mauve)}
 #consegne .del .when{color:var(--hl)}
-#consegne .btn.dark{--fill:var(--ink);background-color:var(--ivory);color:var(--ink);border-color:var(--ivory)}
+#consegne .btn.dark{--fill:#0D0129;background-color:var(--ivory);color:#0D0129;border-color:var(--ivory)}
 #consegne .btn.dark:hover{color:var(--ivory)}
 #consegne .btn.line{--fill:var(--ivory);border-color:var(--ivory);color:var(--ivory)}
-#consegne .btn.line:hover{color:var(--ink)}
+#consegne .btn.line:hover{color:#0D0129}
 #consegne .btn.todo{color:rgba(255,252,247,.6);border-color:rgba(255,252,247,.35)}
 #consegne .badge::before{background:var(--hl)}
 main > section#consegne + section{border-top:0}
@@ -417,7 +418,7 @@ body > footer{border-top:6px solid var(--eden)}
 
 <nav id="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Relook, torna su"><img src="assets/logo-word.png" alt="Relook"></a>
+    <a class="brand" href="#top" aria-label="Relook, torna su"><img src="assets/logo-word-plum.png" alt="Relook"></a>
     <ul id="menu">
       <li><a href="#voci">Chi abbiamo sentito</a></li>
       <li><a href="#bisogni">Bisogni</a></li>
@@ -467,7 +468,7 @@ body > footer{border-top:6px solid var(--eden)}
 
 <main>
   <section id="voci">
-    <div class="deco" aria-hidden="true"><span class="f" style="--c:var(--hl);--s:260px;right:-90px;top:70px;--d:16s;--py:-120px"></span><span class="r" style="--c:var(--eden);--s:140px;right:150px;top:250px;--d:12s;--py:-60px"></span><span class="f" style="--c:var(--mauve);--s:72px;left:-26px;top:36%;--d:14s;--py:-90px"></span><span class="f" style="--c:var(--iris);--s:16px;left:5%;top:150px;--d:9s;--py:-40px"></span><span class="r" style="--c:var(--brown);--s:400px;left:-220px;bottom:-140px;--d:20s;--py:-160px"></span><span class="f" style="--c:var(--eden);--s:34px;right:7%;bottom:22%;--d:11s;--py:-70px"></span><span class="f" style="--c:var(--hl);--s:12px;left:47%;bottom:40px;--d:8s;--py:-30px"></span><span class="f" style="--c:var(--brown);--s:10px;right:30%;top:48px;--d:10s;--py:-50px"></span></div>
+    <div class="deco" aria-hidden="true"><span class="f" style="--c:var(--hl);--s:260px;right:-90px;top:70px;--d:16s;--py:-120px"></span><span class="r" style="--c:var(--eden);--s:140px;right:150px;top:250px;--d:12s;--py:-60px"></span><span class="f" style="--c:var(--brown);--s:72px;left:-26px;top:36%;--d:14s;--py:-90px"></span><span class="f" style="--c:var(--iris);--s:16px;left:5%;top:150px;--d:9s;--py:-40px"></span><span class="r" style="--c:var(--brown);--s:400px;left:-220px;bottom:-140px;--d:20s;--py:-160px"></span><span class="f" style="--c:var(--eden);--s:34px;right:7%;bottom:22%;--d:11s;--py:-70px"></span><span class="f" style="--c:var(--hl);--s:12px;left:47%;bottom:40px;--d:8s;--py:-30px"></span><span class="f" style="--c:var(--brown);--s:10px;right:30%;top:48px;--d:10s;--py:-50px"></span></div>
     <div class="wrap">
       <h2>Chi abbiamo <em>sentito</em></h2>
       <p class="lead">A inizio ottobre abbiamo fatto 7 interviste (5 ragazzi e ragazze tra i 20 e i 24 anni e 2 esperte di moda) e raccolto 408 risposte a un questionario. Queste sono alcune delle frasi che ci hanno guidato.</p>
@@ -534,7 +535,7 @@ body > footer{border-top:6px solid var(--eden)}
   </section>
 
   <section id="processo">
-    <div class="deco" aria-hidden="true"><span class="f" style="--c:var(--eden);--s:210px;left:-90px;top:110px;--d:18s;--py:-140px"></span><span class="r" style="--c:var(--mauve);--s:110px;left:70px;top:330px;--d:12s;--py:-70px"></span><span class="f" style="--c:var(--hl);--s:150px;right:-55px;top:42%;--d:15s;--py:-110px"></span><span class="f" style="--c:var(--brown);--s:22px;right:12%;top:96px;--d:9s;--py:-40px"></span><span class="r" style="--c:var(--iris);--s:320px;right:-160px;bottom:-110px;--d:22s;--py:-150px"></span><span class="f" style="--c:var(--mauve);--s:48px;left:32%;bottom:-24px;--d:13s;--py:-60px"></span><span class="f" style="--c:var(--hl);--s:12px;left:4%;bottom:28%;--d:8s;--py:-30px"></span><span class="f" style="--c:var(--iris);--s:14px;left:55%;top:60px;--d:10s;--py:-50px"></span></div>
+    <div class="deco" aria-hidden="true"><span class="f" style="--c:var(--eden);--s:210px;left:-90px;top:110px;--d:18s;--py:-140px"></span><span class="r" style="--c:var(--brown);--s:110px;left:70px;top:330px;--d:12s;--py:-70px"></span><span class="f" style="--c:var(--hl);--s:150px;right:-55px;top:42%;--d:15s;--py:-110px"></span><span class="f" style="--c:var(--brown);--s:22px;right:12%;top:96px;--d:9s;--py:-40px"></span><span class="r" style="--c:var(--iris);--s:320px;right:-160px;bottom:-110px;--d:22s;--py:-150px"></span><span class="f" style="--c:var(--brown);--s:48px;left:32%;bottom:-24px;--d:13s;--py:-60px"></span><span class="f" style="--c:var(--hl);--s:12px;left:4%;bottom:28%;--d:8s;--py:-30px"></span><span class="f" style="--c:var(--iris);--s:14px;left:55%;top:60px;--d:10s;--py:-50px"></span></div>
     <div class="wrap">
       <h2>Dietro le <em>quinte</em></h2>
       <p class="lead">Dopo le interviste abbiamo fatto due focus group, uno in presenza e uno online, per mettere alla prova i bisogni e le prime idee. Poi abbiamo messo tutto su una board.</p>
@@ -649,7 +650,7 @@ body > footer{border-top:6px solid var(--eden)}
 
 <footer>
   <div class="wrap">
-    <img src="assets/logo-word.png" alt="Relook">
+    <img src="assets/logo-word-cream.png" alt="Relook">
     <span>Gruppo Nexus · Fondamenti di HCI · Politecnico di Milano · a.a. 2026/27</span>
   </div>
 </footer>
