@@ -478,8 +478,7 @@ img{-webkit-user-drag:none}
 .hero{height:calc(235vh + 54px);display:block;overflow:clip;background:#4E1228;position:relative;isolation:auto}
 .hero-pin{position:sticky;top:68px;height:calc(100svh - 68px);min-height:540px;overflow:hidden}
 #stage{position:absolute;inset:0;touch-action:pan-y}
-#stage canvas{display:block;width:100%;height:100%;opacity:0;transition:opacity .45s ease-out}
-#stage.on canvas{opacity:1}
+#stage canvas{display:block;width:100%;height:100%}
 .hero-shade{position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(90deg,rgba(78,18,40,0.98) 0%,rgba(78,18,40,0.96) 30%,rgba(78,18,40,0.93) 38%,rgba(78,18,40,0.87) 44%,rgba(78,18,40,0.77) 49%,rgba(78,18,40,0.62) 54%,rgba(78,18,40,0.45) 59%,rgba(78,18,40,0.29) 64%,rgba(78,18,40,0.16) 69%,rgba(78,18,40,0.07) 74%,rgba(78,18,40,0) 80%),radial-gradient(130% 100% at 66% 50%,transparent 60%,rgba(78,18,40,.45) 100%)}
 .pbar{position:absolute;left:0;top:0;height:2px;width:calc(var(--p,0) * 100%);background:var(--hl);z-index:6}
 .cap{position:absolute;z-index:3;left:max(var(--gutter),calc((100vw - 1240px) / 2));top:50%;transform:translateY(-50%);max-width:min(540px,calc(100% - 2 * var(--gutter)));pointer-events:none;will-change:opacity,translate;color:var(--ivory)}
@@ -881,6 +880,6 @@ img{-webkit-user-drag:none}
 })();
 </script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
-<script type="module" src="assets/hero3d.js"></script>
+<script type="module" src="assets/hero3d.js?v=2"></script>
 </body>
 </html>

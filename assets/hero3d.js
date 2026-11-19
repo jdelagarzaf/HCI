@@ -21,6 +21,7 @@ renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFShadowMap;
 renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.0;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 stage.appendChild(renderer.domElement);
+renderer.domElement.style.cssText += ';opacity:0;transition:opacity .45s ease-out';   // dissolvenza gestita qui: se il browser tiene in cache un index.html diverso, la scena non resta mai nascosta
 const aniso = renderer.capabilities.getMaxAnisotropy();
 const scene = new THREE.Scene();
 const BG = 0x4E1228;
@@ -294,7 +295,7 @@ const addMannDetails = () => {
 };
 let mannLoaded = false;
 // la scena compare in dissolvenza subito, dal primo fotogramma disegnato
-requestAnimationFrame(() => requestAnimationFrame(() => stage.classList.add('on')));
+requestAnimationFrame(() => requestAnimationFrame(() => { renderer.domElement.style.opacity = 1; }));
 fetch('assets/mannequin.bin').then(r => r.arrayBuffer()).then(buf => {      // mesh binario compatto (1 MB invece di 7,6 MB di OBJ)
   const [nv, ni] = new Uint32Array(buf, 0, 2), g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(buf, 8, nv * 3), 3));
