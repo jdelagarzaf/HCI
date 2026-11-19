@@ -5,3 +5,4 @@ exclude:
   - C1
   - C2
   - README.md
+  - assets/3d
