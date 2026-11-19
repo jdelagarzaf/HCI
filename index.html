@@ -8,6 +8,8 @@
 <meta property="og:title" content="Relook · Gruppo Nexus">
 <meta property="og:description" content="Interviste, focus group, storyboard e prototipi per usare meglio i vestiti che si hanno già.">
 <meta name="theme-color" content="#6B1937">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="assets/logo-icon.png">
 <link rel="icon" href="assets/logo-mark-plum.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +36,7 @@
   button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
   :focus-visible{outline:2px solid var(--brown-t);outline-offset:4px}
   ::selection{background:var(--hl);color:var(--ink)}
-  header.hero{--ink:#0D0129} /* hero 3D invariata finché non viene rifatta */
+  header.hero{--ink:#4E1228}
   .wrap{max-width:1280px;margin:0 auto;padding:0 var(--gutter)}
   h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.015em;font-optical-sizing:auto}
   em{font-style:italic}
@@ -200,7 +202,7 @@
   .member b{display:block;font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.2;margin-top:14px;padding-top:10px;border-top:1px solid var(--line);transition:border-color .4s}
   .member:hover b{border-top-color:var(--ink)}
 
-  body > footer{background:var(--ink);color:rgba(255,252,247,.6);font-size:13px;letter-spacing:.04em;padding:48px 0}
+  body > footer{background:var(--brown);color:rgba(255,252,247,.6);font-size:13px;letter-spacing:.04em;padding:48px 0}
   body > footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
   body > footer img{height:20px}
 
@@ -369,48 +371,150 @@ body > footer{border-top:6px solid var(--eden)}
 @media (max-width:820px){.deco span{scale:.6}}
 /* gruppo: frase introduttiva senza limite di larghezza, su una riga dove ci sta */
 #gruppo .lead{max-width:none}
+/* dietro le quinte: percorso, personas, voti, storyboard */
+#processo .sub-h{font-size:clamp(30px,3.2vw,42px);margin:104px 0 28px}
+#processo .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:1px solid var(--line);counter-reset:st}
+#processo .steps li{position:relative;padding:26px 18px 0 0;counter-increment:st}
+#processo .steps li::before{content:"";position:absolute;left:0;top:-5px;width:9px;height:9px;border-radius:50%;background:var(--brown);box-shadow:0 0 0 4px var(--ivory)}
+#processo .steps .when{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-t);margin-bottom:8px}
+#processo .steps b{display:block;font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.15;margin-bottom:8px}
+#processo .steps p{font-size:14px;line-height:1.55;color:var(--stone);font-weight:300}
+#processo .personas{display:grid;grid-template-columns:repeat(4,1fr);gap:40px 32px}
+#processo .persona{border-top:3px solid var(--brown);padding:20px 0 0;display:flex;flex-direction:column;gap:12px}
+#processo .persona h4{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1}
+#processo .persona h4 span{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);margin-left:6px;vertical-align:middle}
+#processo .persona > p{font-size:14px;line-height:1.55;color:var(--stone);font-weight:300}
+#processo .persona .goal span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--eden);margin-bottom:4px;font-weight:500}
+#processo .persona blockquote{margin-top:auto;padding:12px 0 0 14px;border-left:2px solid var(--brown)}
+#processo .persona blockquote p{font-size:16px;line-height:1.45}
+#processo .persona blockquote::before{content:none}
+#processo .votes{max-width:960px}
+#processo .bars{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:4px}
+#processo .bars li{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 64px;align-items:center;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+#processo .bars li:first-child{border-top:1px solid var(--line)}
+#processo .bl{transition:color .25s}
+#processo .bars li:hover .bl{color:var(--brown)}
+#processo .bl{font-size:14.5px;line-height:1.45}
+#processo .track{height:10px}
+#processo .track i{display:block;height:100%;width:calc(var(--v) / 6 * 100%);background:var(--brown);border-radius:0 4px 4px 0}
+#processo .bars li:nth-child(n+3) .track i{opacity:.55}
+#processo .bars b{font-weight:500;font-size:13px;color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
+#processo .sb{display:block}
+#processo .sb-head{display:grid;grid-template-columns:1fr 1.2fr;gap:20px 72px;align-items:start;margin-bottom:32px}
+#processo .sb-head h3{margin:0}
+#processo .strip ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+#processo .strip li img{aspect-ratio:4/3;object-fit:contain;background:#fff}
+#processo .strip li p{font-size:13px;line-height:1.5;color:var(--stone);margin-top:8px}
+#processo .strip .n{display:inline-block;font-weight:500;color:var(--brown-t);margin-right:6px;font-variant-numeric:tabular-nums}
+@media (max-width:1000px){
+  #processo .steps{grid-template-columns:repeat(3,1fr);row-gap:28px}
+  #processo .personas{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  #processo .steps{grid-template-columns:1fr;border-top:0;border-left:1px solid var(--line);row-gap:22px;margin-left:4px}
+  #processo .steps li{padding:0 0 0 20px}
+  #processo .steps li::before{left:-5px;top:4px}
+  #processo .personas{grid-template-columns:1fr}
+  #processo .bars li{grid-template-columns:1fr 52px;gap:6px 12px}
+  #processo .bl{grid-column:1/-1}
+  #processo .sb-head{grid-template-columns:1fr}
+  #processo .strip ol{grid-template-columns:repeat(2,1fr)}
+}
+/* dettagli fini */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-kerning:normal;font-feature-settings:"kern","liga"}
+p,li,figcaption,blockquote p,.lead,.note{text-wrap:pretty}                 /* niente parole orfane a fine paragrafo */
+blockquote p{hanging-punctuation:first allow-end}                           /* virgolette «» fuori margine dove supportato */
+.vs td,.needs small,.del .when,.figures span{font-variant-numeric:tabular-nums}
+a,button{-webkit-tap-highlight-color:transparent}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline-offset:3px}
+/* focus visibile anche sui fondi scuri */
+.hero :focus-visible,#bisogni :focus-visible,#consegne :focus-visible,body > footer :focus-visible{outline-color:var(--hl)}
+main p a:not(.btn){text-decoration-thickness:1px;text-underline-offset:.2em}
+img{-webkit-user-drag:none}
+@media print{
+  nav,.hero-pin #stage,.hero-shade,.cue,.pbar,#tags,.tip,.choice,.deco,.orbs,.viewer,.zoom-btn{display:none!important}
+  .hero{height:auto!important;background:none!important;color:var(--ink)!important}
+  .hero-pin{position:static!important;height:auto!important;min-height:0!important}
+  .cap{position:static!important;transform:none!important;opacity:1!important;visibility:visible!important;translate:none!important;color:var(--ink)!important;max-width:none!important;margin-bottom:24px}
+  .cap h2,.cap p,.hero .cap h1{color:var(--ink)!important}
+  section{padding:40px 0!important;break-inside:avoid-page}
+  #bisogni,#consegne,body > footer{background:none!important;color:var(--ink)!important}
+  a[href^="http"]:not(.btn)::after{content:" (" attr(href) ")";font-size:.8em}
+}
+/* processo: immagini in cornice con didascalia numerata */
+#processo figure.frame{background:none;border:0;padding:0;box-shadow:none}
+#processo figure.frame img{border-radius:3px}
+#processo figure.frame figcaption{font-family:var(--sans);font-size:13px;line-height:1.55;color:var(--stone);margin-top:12px;padding-top:10px;max-width:none}
+#processo .fig-n{font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-size:11px;margin-right:10px}
+#processo .board{max-width:960px;margin-left:auto;margin-right:auto}
+#processo .board-media{position:relative}
+#processo .board a{border:0;background:none;border-radius:3px;cursor:zoom-in}
+#processo .board a:focus-visible{outline:2px solid var(--brown);outline-offset:3px}
+#processo .zoom-btn{position:absolute;right:12px;bottom:12px;padding:7px 14px;border-radius:999px;background:rgba(255,252,247,.92);border:1px solid var(--line);color:var(--ink);font-size:12.5px;letter-spacing:.04em;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .25s,color .25s}
+#processo .zoom-btn:hover,#processo .zoom-btn:focus-visible{background:var(--ink);color:var(--ivory);outline:none}
+#processo .sb-fig a:not(.btn){padding:0;border:0;background:none;box-shadow:none;transform:none;max-width:none}
+#processo .sb-fig a:not(.btn):hover{transform:none;box-shadow:none}
+/* visualizzatore a schermo intero */
+.viewer{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--ivory);overflow:hidden}
+.viewer::backdrop{background:rgba(69,13,29,.92)}
+.viewer-stage{position:absolute;inset:0;overflow:hidden;touch-action:none;cursor:grab}
+.viewer-stage.drag{cursor:grabbing}
+.viewer-stage img{position:absolute;left:50%;top:50%;max-width:none;user-select:none;-webkit-user-drag:none;background:var(--paper);border-radius:4px;box-shadow:0 30px 80px -30px rgba(0,0,0,.6)}
+.viewer-tools{position:absolute;top:16px;right:16px;display:flex;gap:6px}
+.viewer-tools button{min-width:40px;height:40px;padding:0 14px;border-radius:999px;background:rgba(255,252,247,.14);border:1px solid rgba(255,252,247,.3);color:var(--ivory);font-size:14px;letter-spacing:.04em;transition:background .2s,color .2s}
+.viewer-tools button:hover,.viewer-tools button:focus-visible{background:var(--ivory);color:var(--ink);outline:none}
+.viewer-tools .viewer-close{margin-left:8px;background:var(--ivory);color:var(--ink);text-transform:uppercase;font-size:12.5px;letter-spacing:.08em}
+.viewer-hint{position:absolute;left:50%;bottom:16px;translate:-50% 0;width:max-content;max-width:calc(100% - 32px);text-align:center;font-size:12.5px;color:rgba(255,252,247,.72);pointer-events:none}
+@media (prefers-reduced-motion:no-preference){
+  .viewer[open]{animation:viewerIn .3s cubic-bezier(.2,.7,.2,1)}
+  .viewer[open]::backdrop{animation:viewerFade .3s ease-out}
+  @keyframes viewerIn{from{opacity:0;transform:scale(.985)}}
+  @keyframes viewerFade{from{opacity:0}}
+}
 
 /* ===== hero 3D guidato dallo scroll ===== */
-.hero{height:440vh;display:block;overflow:clip;background:#0D0129;position:relative;isolation:auto}
+.hero{height:calc(235vh + 54px);display:block;overflow:clip;background:#4E1228;position:relative;isolation:auto}
 .hero-pin{position:sticky;top:68px;height:calc(100svh - 68px);min-height:540px;overflow:hidden}
 #stage{position:absolute;inset:0;touch-action:pan-y}
-#stage canvas{display:block;width:100%;height:100%}
-.hero-shade{position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(90deg,rgba(13,1,41,.92) 0%,rgba(13,1,41,.6) 30%,rgba(13,1,41,0) 56%),radial-gradient(130% 100% at 62% 50%,transparent 60%,rgba(13,1,41,.5) 100%)}
+#stage canvas{display:block;width:100%;height:100%;opacity:0;transition:opacity .45s ease-out}
+#stage.on canvas{opacity:1}
+.hero-shade{position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(90deg,rgba(78,18,40,0.98) 0%,rgba(78,18,40,0.96) 30%,rgba(78,18,40,0.93) 38%,rgba(78,18,40,0.87) 44%,rgba(78,18,40,0.77) 49%,rgba(78,18,40,0.62) 54%,rgba(78,18,40,0.45) 59%,rgba(78,18,40,0.29) 64%,rgba(78,18,40,0.16) 69%,rgba(78,18,40,0.07) 74%,rgba(78,18,40,0) 80%),radial-gradient(130% 100% at 66% 50%,transparent 60%,rgba(78,18,40,.45) 100%)}
 .pbar{position:absolute;left:0;top:0;height:2px;width:calc(var(--p,0) * 100%);background:var(--hl);z-index:6}
 .cap{position:absolute;z-index:3;left:max(var(--gutter),calc((100vw - 1240px) / 2));top:50%;transform:translateY(-50%);max-width:min(540px,calc(100% - 2 * var(--gutter)));pointer-events:none;will-change:opacity,translate;color:var(--ivory)}
 .cap .cta a{pointer-events:auto}
+#c2,#c3,#c4{opacity:0;visibility:hidden} /* nascosti finché lo script della scena non prende il controllo: evita il lampo dei titoli sovrapposti al caricamento */
 .cap .eyebrow{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--hl);margin-bottom:18px}
 .cap h2{font-family:var(--serif);font-weight:500;font-size:clamp(36px,4.8vw,68px);line-height:1.03;letter-spacing:-.02em;color:var(--ivory);margin:0 0 20px}
 .cap h2 em{color:var(--hl);font-weight:400}
-.cap p:not(.sub):not(.meta){color:#E8DED0;font-weight:300;font-size:18px;line-height:1.6;max-width:28em}
+.cap p:not(.sub):not(.meta):not(.worn){color:#E8DED0;font-weight:300;font-size:18px;line-height:1.6;max-width:28em}
 .hero .cap h1{font-size:clamp(46px,6.4vw,100px);white-space:nowrap;margin-bottom:34px}
 .cap .sub{font-size:clamp(16px,1.35vw,19px);margin-top:0}
 .cap .cta{margin-top:30px}
-.hero h1,.hero h1 em,.hero p.sub,.hero .cta,.hero .meta{animation:none}
-.rbar{position:absolute;z-index:5;right:max(var(--gutter),calc((100vw - 1240px) / 2));bottom:26px;display:flex;flex-direction:column;align-items:flex-end;gap:12px;max-width:min(540px,calc(100% - 2 * var(--gutter)));opacity:0;pointer-events:none}
-.rinfo{font-size:14px;line-height:1.5;color:#F3EADC;text-align:right;background:rgba(13,1,41,.62);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,252,247,.12);padding:12px 16px;border-radius:14px;min-height:3.2em}
-.modes{display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(13,1,41,.62);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,252,247,.14);flex-wrap:wrap;justify-content:flex-end}
-.modes button{padding:9px 16px;border-radius:999px;font-size:13px;letter-spacing:.03em;color:rgba(255,252,247,.78);transition:background .3s,color .3s}
-.modes button:hover{color:#fff}
-.modes button.on{background:var(--hl);color:#2a0a16;font-weight:500}
-.racts{display:flex;gap:8px}
-.racts button{padding:8px 16px;border-radius:999px;font-size:12.5px;letter-spacing:.05em;color:var(--hl);border:1px solid rgba(250,229,155,.4);background:rgba(13,1,41,.4);transition:background .3s,color .3s}
-.racts button:hover{background:var(--hl);color:#2a0a16}
+.cap .worn{font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:.02em;line-height:1.5;color:rgba(255,252,247,.75);margin:14px 0 0}
+.cap .worn button{pointer-events:auto;margin-left:8px;padding:2px 0;font-size:12px;letter-spacing:.04em;color:rgba(255,252,247,.6);text-decoration:underline;text-underline-offset:3px;transition:color .2s}
+.cap .worn button:hover,.cap .worn button:focus-visible{color:var(--hl)}
 #tags{position:absolute;inset:0;pointer-events:none;z-index:2}
-.tag{position:absolute;left:0;top:0;padding:3px 10px;border-radius:99px;background:var(--hl);color:#2a0a16;font-size:11px;font-weight:500;letter-spacing:.04em;white-space:nowrap;opacity:0;transition:opacity .3s;box-shadow:0 0 22px rgba(250,229,155,.55)}
-.tip{position:absolute;left:0;top:0;z-index:4;pointer-events:none;padding:10px 14px;border-radius:12px;background:rgba(13,1,41,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,252,247,.14);color:var(--ivory);font-size:13px;line-height:1.4;opacity:0;transition:opacity .2s;max-width:230px}
-.tip b{display:block;font-weight:500;font-size:14px;margin-bottom:2px}.tip i{font-style:normal;color:var(--hl)}
+.tag{position:absolute;left:0;top:0;padding:2px 8px;border-radius:99px;background:rgba(78,18,40,.6);color:rgba(255,252,247,.85);font-size:10.5px;letter-spacing:.03em;white-space:nowrap;opacity:0;transition:opacity .3s}
+.tag-btn{cursor:pointer;transition:opacity .3s,background .2s,color .2s}
+.tag-btn:hover,.tag-btn:focus-visible{background:var(--hl);color:#4E1228;outline:none}
+.choice{position:absolute;left:0;top:0;z-index:5;display:flex;align-items:center;gap:4px;padding:4px;border-radius:999px;background:rgba(78,18,40,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--ivory);opacity:0;visibility:hidden;transition:opacity .2s,visibility 0s .2s}
+.choice.on{opacity:1;visibility:visible;transition:opacity .2s}
+.choice-t{padding:0 6px 0 10px;font-size:11.5px;color:rgba(255,252,247,.75);white-space:nowrap}
+.choice button{padding:6px 12px;border-radius:999px;font-size:12px;border:1px solid rgba(255,252,247,.25);transition:background .2s,color .2s}
+.choice button:hover,.choice button:focus-visible{background:var(--hl);border-color:var(--hl);color:#4E1228}
+.hero h1,.hero h1 em,.hero p.sub,.hero .cta,.hero .meta{animation:none}
+.tip{position:absolute;left:0;top:0;z-index:4;pointer-events:none;padding:6px 10px;border-radius:8px;background:rgba(78,18,40,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--ivory);font-size:11.5px;line-height:1.35;opacity:0;transition:opacity .2s;max-width:180px}
+.tip b{display:block;font-weight:500;font-size:12.5px;margin-bottom:1px}
 .cue{position:absolute;left:50%;bottom:24px;z-index:3;translate:-50% 0;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,252,247,.75);text-align:center;pointer-events:none}
 .cue::after{content:"";display:block;width:1px;height:40px;margin:10px auto 0;background:linear-gradient(var(--hl),transparent);animation:cue 1.9s ease-in-out infinite}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-.hero-load{position:absolute;inset:0;z-index:7;display:grid;place-items:center;background:#0D0129;color:var(--hl);font-family:var(--serif);font-style:italic;font-size:22px;transition:opacity .9s .2s,visibility 0s 1.2s}
-.hero-load.gone{opacity:0;visibility:hidden}
 @supports (animation-timeline: view()){ blockquote.big{animation:none} }
 @media (max-width:820px){
-  .hero-shade{background:linear-gradient(180deg,rgba(13,1,41,.88) 0%,rgba(13,1,41,.45) 38%,rgba(13,1,41,0) 62%)}
+  .hero-shade{background:linear-gradient(180deg,rgba(78,18,40,.95) 0%,rgba(78,18,40,.9) 34%,rgba(78,18,40,.8) 46%,rgba(78,18,40,.4) 56%,rgba(78,18,40,0) 64%)}
   .cap{top:6%;transform:none}.hero .cap h1{font-size:clamp(38px,11vw,60px)}
   .cap .sub + .sub,.cap .meta{display:none}
-  .rbar{left:var(--gutter);right:var(--gutter);align-items:stretch;bottom:16px}.modes{justify-content:center}.rinfo{text-align:left;font-size:13px}
 }
 </style>
 </head>
@@ -439,30 +543,23 @@ body > footer{border-top:6px solid var(--eden)}
     <div class="cap" id="c1">
       <h1>Meno caos,<br><em>più stile.</em></h1>
       <p class="sub">Siamo Nexus, sei studenti del corso di Fondamenti di HCI al Politecnico di Milano. Da ottobre cerchiamo di capire perché, davanti a un armadio pieno, «non si ha niente da mettere».</p>
-      <p class="sub">La nostra risposta si chiama Relook: un’app per scegliere con i vestiti che si hanno già, comprare solo quando serve e dare una seconda vita a ciò che resta fermo.</p>
+      <p class="sub">Così è nata l’idea di Relook, un’app per scegliere con i vestiti che si hanno già, comprare solo quando serve e dare una seconda vita a ciò che resta fermo.</p>
       <div class="cta">
         <a class="btn solid" href="#voci">Chi abbiamo sentito</a>
         <a class="btn ghost" href="#consegne">Le consegne</a>
       </div>
       <p class="meta">Gruppo Nexus · Politecnico di Milano · a.a. 2026/27</p>
     </div>
-    <div class="cap" id="c2"><span class="eyebrow">01 · Apri</span><h2>Un armadio pieno,<br><em>e niente da mettere.</em></h2><p>Il problema non è ciò che manca: è ciò che non vedi più.</p></div>
-    <div class="cap" id="c3"><span class="eyebrow">02 · Guarda</span><h2>Ogni capo,<br><em>di nuovo in vista.</em></h2><p>Relook ti mostra cosa hai, cosa non metti da mesi e cosa ti serve davvero.</p></div>
-    <div class="cap" id="c4"><span class="eyebrow">03 · Prova</span><h2>Scegli con ciò<br><em>che hai già.</em></h2><p>Passa sui capi e clicca per vestire il manichino. Trascinalo per girarlo.</p>
+    <div class="cap" id="c2"><span class="eyebrow">01 · Apri</span><h2>Un armadio pieno,<br><em>e niente da mettere.</em></h2><p>Spesso i vestiti ci sono, solo che non li vediamo.</p></div>
+    <div class="cap" id="c3"><span class="eyebrow">02 · Guarda</span><h2>Tutti i capi<br><em>sott’occhio.</em></h2><p>Relook ti mostra cosa hai, cosa non metti da mesi e cosa ti serve davvero.</p></div>
+    <div class="cap" id="c4"><span class="eyebrow">03 · Prova</span><h2>Prova prima<br><em>quello che hai.</em></h2><p>Clicca un capo per provarlo. Quelli fermi da mesi puoi metterli via. Trascina il manichino per girarlo.</p>
+      <p class="worn"><span id="worn" aria-live="polite"></span> <button type="button" id="reset">Ricomincia</button></p>
       <div class="cta"><a class="btn solid" href="#voci">Chi abbiamo sentito</a><a class="btn ghost" href="#consegne">Le consegne</a></div></div>
 
-    <div class="rbar" id="rbar">
-      <p class="rinfo" id="rinfo" aria-live="polite"></p>
-      <div class="modes" role="group" aria-label="Come funziona Relook">
-        <button type="button" data-mode="wear" class="on">Scegli con ciò che hai</button>
-        <button type="button" data-mode="unused">Seconda vita</button>
-        <button type="button" data-mode="missing">Compra solo se serve</button>
-      </div>
-      <div class="racts"><button type="button" id="shuffle">Sorprendimi</button><button type="button" id="reset">Ripristina</button></div>
-    </div>
-    <div class="tip" id="tip"></div><div id="tags"></div>
+    <div id="tags"></div>
+    <div class="choice" id="choice" role="group" aria-label="Cosa fare con questo capo" aria-hidden="true"><span class="choice-t" id="choiceT"></span><button type="button" data-act="try">Prova</button><button type="button" data-act="away">Metti via</button></div>
+    <div class="tip" id="tip"></div>
     <div class="cue" aria-hidden="true">Scorri</div>
-    <div class="hero-load" id="hload">Apro l’armadio…</div>
   </div>
 </header>
 
@@ -471,7 +568,7 @@ body > footer{border-top:6px solid var(--eden)}
     <div class="deco" aria-hidden="true"><span class="f" style="--c:var(--hl);--s:260px;right:-90px;top:70px;--d:16s;--py:-120px"></span><span class="r" style="--c:var(--eden);--s:140px;right:150px;top:250px;--d:12s;--py:-60px"></span><span class="f" style="--c:var(--brown);--s:72px;left:-26px;top:36%;--d:14s;--py:-90px"></span><span class="f" style="--c:var(--iris);--s:16px;left:5%;top:150px;--d:9s;--py:-40px"></span><span class="r" style="--c:var(--brown);--s:400px;left:-220px;bottom:-140px;--d:20s;--py:-160px"></span><span class="f" style="--c:var(--eden);--s:34px;right:7%;bottom:22%;--d:11s;--py:-70px"></span><span class="f" style="--c:var(--hl);--s:12px;left:47%;bottom:40px;--d:8s;--py:-30px"></span><span class="f" style="--c:var(--brown);--s:10px;right:30%;top:48px;--d:10s;--py:-50px"></span></div>
     <div class="wrap">
       <h2>Chi abbiamo <em>sentito</em></h2>
-      <p class="lead">A inizio ottobre abbiamo fatto 7 interviste (5 ragazzi e ragazze tra i 20 e i 24 anni e 2 esperte di moda) e raccolto 408 risposte a un questionario. Queste sono alcune delle frasi che ci hanno guidato.</p>
+      <p class="lead">A inizio ottobre abbiamo fatto 7 interviste (5 ragazzi e ragazze tra i 20 e i 24 anni e 2 esperte di moda) e raccolto 408 risposte a un questionario. Qui sotto alcune delle frasi che ci sono rimaste impresse.</p>
 
       <div class="quotes">
         <blockquote class="big">
@@ -501,7 +598,7 @@ body > footer{border-top:6px solid var(--eden)}
         <div><b>59%</b><span>tiene i capi che non usa, «non si sa mai»</span></div>
         <div><b>11%</b><span>considera la sostenibilità del brand prima di comprare; l’87% guarda il prezzo</span></div>
       </div>
-      <p class="note">Dati del questionario (1–9 ottobre 2026) sul sottogruppo 18–30 anni, 187 risposte su 408. Il campione è di convenienza e sbilanciato per età e genere: lo leggiamo con cautela.</p>
+      <p class="note">Dati del questionario (1–9 ottobre 2026) sul sottogruppo 18–30 anni, 187 risposte su 408.</p>
 
       <table class="vs">
         <caption>Ciò che dicono, ciò che fanno</caption>
@@ -540,24 +637,72 @@ body > footer{border-top:6px solid var(--eden)}
       <h2>Dietro le <em>quinte</em></h2>
       <p class="lead">Dopo le interviste abbiamo fatto due focus group, uno in presenza e uno online, per mettere alla prova i bisogni e le prime idee. Poi abbiamo messo tutto su una board.</p>
 
+      <h3 class="sub-h">Il <em>percorso</em></h3>
+      <ol class="steps">
+        <li><span class="when">Ottobre</span><b>Questionario</b><p>408 risposte. Il 58% dei 18–30 anni sente di non avere nulla da mettere.</p></li>
+        <li><span class="when">Ottobre</span><b>Interviste</b><p>7 interviste: 5 ragazzi e ragazze tra i 20 e i 24 anni e 2 esperte di moda.</p></li>
+        <li><span class="when">Ottobre</span><b>Focus group</b><p>Uno in presenza con quattro studenti fuori sede, uno online in inglese. L’imprevisto più citato: il capo giusto è sempre a lavare.</p></li>
+        <li><span class="when">Ottobre</span><b>Board e personas</b><p>Bisogni raggruppati in scenari e quattro personas: Luca, Anna, Matteo e Chiara.</p></li>
+        <li><span class="when">Ottobre</span><b>Brainstorming e voto</b><p>Cinque soluzioni votate: vince il controllo prima dell’acquisto, con 6 voti.</p></li>
+        <li><span class="when">Novembre</span><b>Storyboard e prototipi</b><p>Otto vignette, tre task e due prototipi low-fidelity.</p></li>
+      </ol>
+
       <div class="gallery">
-        <figure class="tall"><img src="assets/processo/fg-appunti.jpg" alt="Tavolo del focus group con tablet, quaderni a quadretti e mani dei partecipanti" loading="lazy" width="1100" height="777"><figcaption>Il focus group in presenza, ottobre 2026: quattro partecipanti attorno al tavolo, noi con quaderni e registratori.</figcaption></figure>
-        <figure class="tall"><img src="assets/processo/fg-votazione.jpg" alt="Foglio a quadretti con scritto 50% sul tavolo del focus group" loading="lazy" width="970" height="1100"><figcaption>Fogli a quadretti, penne e qualche percentuale scritta a mano: gli appunti della stessa sessione.</figcaption></figure>
+        <figure class="tall frame"><img decoding="async" src="assets/processo/fg-appunti.jpg" alt="Tavolo del focus group con tablet, quaderni a quadretti e mani dei partecipanti" loading="lazy" width="1100" height="777"><figcaption><span class="fig-n">Fig. 1</span>Il focus group in presenza, ottobre 2026: quattro partecipanti e noi che prendevamo appunti e registravamo.</figcaption></figure>
+        <figure class="tall frame"><img decoding="async" src="assets/processo/fg-votazione.jpg" alt="Foglio a quadretti con scritto 50% sul tavolo del focus group" loading="lazy" width="970" height="1100"><figcaption><span class="fig-n">Fig. 2</span>Gli appunti presi durante lo stesso focus group.</figcaption></figure>
       </div>
 
-      <figure class="board">
-        <a href="assets/processo/brainstorm-hd.jpg" target="_blank" rel="noopener" aria-label="Apri la board in alta risoluzione"><img src="assets/processo/brainstorm.jpg" alt="Board di sintesi: intervistati, bisogni, bisogni significativi e scenari, quattro personas e soluzioni votate" loading="lazy" width="2400" height="1272"></a>
-        <figcaption>La board di sintesi, da sinistra a destra: le persone ascoltate, i bisogni, gli scenari, le quattro personas (Luca, Anna, Matteo, Chiara) e le soluzioni votate. Le più votate: un controllo prima dell’acquisto e una panoramica dei capi fermi da troppo tempo. Clicca per ingrandire.</figcaption>
+      <h3 class="sub-h">Quattro <em>personas</em></h3>
+      <div class="personas">
+        <article class="persona"><h4>Luca <span>19 anni</span></h4><p>Primo anno di università. Compra vestiti solo quando servono e non si interessa di moda.</p><p class="goal"><span>Obiettivo</span>Uscire di casa sapendo di essere vestito bene, senza l’ansia di sbagliare.</p><blockquote><p>«Alla fine decide mia sorella. Io voglio solo non fare figuracce.»</p></blockquote></article>
+        <article class="persona"><h4>Anna <span>20 anni</span></h4><p>Studentessa pendolare, sempre di corsa la mattina. Ha uno stile definito e compra capi facili da abbinare.</p><p class="goal"><span>Obiettivo</span>Uscire di casa in meno di 5 minuti, vestita giusta per tutta la giornata.</p><blockquote><p>«La mattina sono sempre di corsa e metto la prima cosa che ho davanti. Il problema è quando esco e fa freddo.»</p></blockquote></article>
+        <article class="persona"><h4>Matteo <span>22 anni</span></h4><p>Fuori sede: metà del guardaroba è a casa dei genitori, metà nel suo appartamento a Milano. Veste casual e comodo.</p><p class="goal"><span>Obiettivo</span>Sfruttare quello che ha già, sapendo cosa tiene a casa dei genitori e cosa a Milano.</p><blockquote><p>«Ho l’armadio pieno ma metto sempre le stesse cose. Quella giacca è in pausa finché non capisco con cosa metterla.»</p></blockquote></article>
+        <article class="persona"><h4>Chiara <span>22 anni</span></h4><p>Appassionata di moda e attenta alla sostenibilità. Le piace modificare i vestiti.</p><p class="goal"><span>Obiettivo</span>Liberarsi in modo sensato dei capi inutilizzati e trovare nuovi modi per riusarli o trasformarli.</p><blockquote><p>«Un capo che non metto più non è da buttare: è da ripensare.»</p></blockquote></article>
+      </div>
+
+      <figure class="board frame">
+        <div class="board-media">
+        <a href="assets/processo/brainstorm-hd.jpg" target="_blank" rel="noopener" data-viewer aria-label="Ingrandisci la board di sintesi"><img decoding="async" src="assets/processo/brainstorm.jpg" alt="Board di sintesi: intervistati, bisogni, bisogni significativi e scenari, quattro personas e soluzioni votate" loading="lazy" width="2400" height="1272"></a>
+        <button type="button" class="zoom-btn" data-viewer aria-label="Ingrandisci la board di sintesi">Ingrandisci <span aria-hidden="true">↗</span></button>
+        </div>
+        <figcaption><span class="fig-n">Fig. 3</span>La board di sintesi, da sinistra a destra: le persone ascoltate, i bisogni, gli scenari, le quattro personas (Luca, Anna, Matteo, Chiara) e le soluzioni votate. Le più votate: un controllo prima dell’acquisto e una panoramica dei capi fermi da troppo tempo.</figcaption>
+      </figure>
+
+      <h3 class="sub-h">Le soluzioni <em>votate</em></h3>
+      <figure class="frame votes">
+        <ol class="bars">
+          <li style="--v:6"><span class="bl">Un controllo prima dell’acquisto: «come si abbina con quello che hai?»</span><span class="track" aria-hidden="true"><i></i></span><b>6 voti</b></li>
+          <li style="--v:4"><span class="bl">Una panoramica dei capi fermi da troppo tempo, con le opzioni per dar loro una seconda vita</span><span class="track" aria-hidden="true"><i></i></span><b>4 voti</b></li>
+          <li style="--v:2"><span class="bl">Consigli per il meteo e su quanti strati indossare</span><span class="track" aria-hidden="true"><i></i></span><b>2 voti</b></li>
+          <li style="--v:2"><span class="bl">Un outfit al giorno già pronto</span><span class="track" aria-hidden="true"><i></i></span><b>2 voti</b></li>
+          <li style="--v:2"><span class="bl">Un inventario del guardaroba diviso tra due case</span><span class="track" aria-hidden="true"><i></i></span><b>2 voti</b></li>
+        </ol>
+        <figcaption><span class="fig-n">Fig. 4</span>I risultati della votazione, dalla board di sintesi. Le due più votate sono diventate il cuore di Relook.</figcaption>
       </figure>
 
       <div class="sb">
-        <a href="consegne/C3-storyboard.pdf" target="_blank" rel="noopener" aria-label="Apri lo storyboard in PDF"><img src="assets/processo/storyboard.jpg" alt="Storyboard a fumetto disegnato a mano in otto vignette" loading="lazy" width="1100" height="1594"></a>
-        <div>
+        <div class="sb-head">
           <h3>Lo storyboard, <em>a mano</em></h3>
-          <p>Otto vignette per raccontare il «non ho niente da mettere» dall’inizio alla fine: in negozio una maglia sembra perfetta, Relook mostra due capi simili già nell’armadio, la maglia resta lì.</p>
-          <p>Il finale: un outfit fatto solo di cose già sue e gli stivali giusti, perché Relook sapeva che avrebbe piovuto.</p>
+          <div>
+          <p>In otto vignette raccontiamo una situazione tipica: in negozio una maglia sembra perfetta, ma Relook fa notare che nell’armadio ce ne sono già due simili, e alla fine la maglia non viene comprata.</p>
+          <p>Alla fine si è vestito solo con cose che aveva già e si è messo gli stivali, perché Relook sapeva che avrebbe piovuto.</p>
           <a class="btn line" href="consegne/C3-storyboard.pdf" target="_blank" rel="noopener">Apri il PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+          </div>
         </div>
+        <figure class="frame strip">
+          <ol>
+            <li><img decoding="async" loading="lazy" src="assets/processo/storyboard/v1.jpg" alt="" width="458" height="353"><p><span class="n">1</span>«Non ho niente da mettermi!», davanti all’armadio pieno.</p></li>
+            <li><img decoding="async" loading="lazy" src="assets/processo/storyboard/v2.jpg" alt="" width="458" height="353"><p><span class="n">2</span>In negozio: «Questa sarebbe perfetta», a 59 €.</p></li>
+            <li><img decoding="async" loading="lazy" src="assets/processo/storyboard/v3.jpg" alt="" width="458" height="353"><p><span class="n">3</span>Apre Relook e confronta la maglia con il suo armadio.</p></li>
+            <li><img decoding="async" loading="lazy" src="assets/processo/storyboard/v4.jpg" alt="" width="458" height="353"><p><span class="n">4</span>«Hai già 2 capi simili.» «Allora non la compro!»</p></li>
+            <li><img decoding="async" loading="lazy" src="assets/processo/storyboard/v5.jpg" alt="" width="458" height="353"><p><span class="n">5</span>«Non ci avevo mai pensato»: ritrova i capi nell’armadio.</p></li>
+            <li><img decoding="async" loading="lazy" src="assets/processo/storyboard/v6.jpg" alt="" width="458" height="353"><p><span class="n">6</span>Relook: «Questi capi vanno bene con la maglia». «Wow!»</p></li>
+            <li><img decoding="async" loading="lazy" src="assets/processo/storyboard/v7.jpg" alt="" width="458" height="353"><p><span class="n">7</span>«Adesso sono pronto, e senza spendere soldi.»</p></li>
+            <li><img decoding="async" loading="lazy" src="assets/processo/storyboard/v8.jpg" alt="" width="458" height="353"><p><span class="n">8</span>Piove, ma Relook gli aveva consigliato gli stivali.</p></li>
+          </ol>
+          <figcaption><span class="fig-n">Fig. 5</span>Lo storyboard a fumetto, disegnato a mano, vignetta per vignetta.</figcaption>
+        </figure>
+      </div>
       </div>
     </div>
   </section>
@@ -573,7 +718,7 @@ body > footer{border-top:6px solid var(--eden)}
           <div>
             <p class="when">Ottobre 2026</p>
             <h3>Needfinding</h3>
-            <p>Abbiamo intervistato 5 utenti target (di cui 2 estremi) e 2 esperte, e diffuso un questionario che ha raccolto 408 risposte. Ne sono usciti 7 bisogni e le prime idee.</p>
+            <p>Abbiamo intervistato 5 utenti target (di cui 2 estremi) e 2 esperte, e diffuso un questionario che ha raccolto 408 risposte. Da qui abbiamo ricavato 7 bisogni e le prime idee.</p>
           </div>
           <div class="links">
             <a class="btn dark" href="consegne/C1-needfinding.pdf" target="_blank" rel="noopener">Slide · PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
@@ -586,7 +731,7 @@ body > footer{border-top:6px solid var(--eden)}
           <div>
             <p class="when">Ottobre 2026</p>
             <h3>Raffinamento e focus</h3>
-            <p>Due focus group, quattro personas con i loro scenari, brainstorming e votazione delle soluzioni. Qui Relook ha preso nome e value proposition.</p>
+            <p>Due focus group, quattro personas con i loro scenari, brainstorming e votazione delle soluzioni. In questa fase abbiamo scelto il nome Relook e definito la value proposition.</p>
           </div>
           <div class="links">
             <a class="btn dark" href="https://www.figma.com/slides/Kf4QsnG6j2F9TeOQO6JD7f/Relook---Raffinamento-e-focus?t=c73FudD5YDekbele-6" target="_blank" rel="noopener">Slide · Figma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
@@ -637,12 +782,12 @@ body > footer{border-top:6px solid var(--eden)}
       <h2>Il <em>gruppo</em></h2>
       <p class="lead">Nexus: sei studenti. Ogni intervista l’ha condotta uno di noi, con uno o due compagni a osservare e prendere appunti.</p>
       <div class="team">
-        <div class="member"><div class="ph"><img src="assets/team/ruggiero.jpg" alt="Ruggiero Leone" loading="lazy"></div><b>Ruggiero Leone</b></div>
-        <div class="member"><div class="ph"><img src="assets/team/fabrizio.jpg" alt="Fabrizio Mazzoleni" loading="lazy"></div><b>Fabrizio Mazzoleni</b></div>
-        <div class="member"><div class="ph"><img src="assets/team/nicole.jpg" alt="Nicole Cianci" loading="lazy"></div><b>Nicole Cianci</b></div>
-        <div class="member"><div class="ph"><img src="assets/team/davide.jpg" alt="Davide Motta" loading="lazy"></div><b>Davide Motta</b></div>
-        <div class="member"><div class="ph"><img src="assets/team/giulia.jpg" alt="Giulia Brivio" loading="lazy"></div><b>Giulia Brivio</b></div>
-        <div class="member"><div class="ph"><img src="assets/team/jorge.jpg" alt="Jorge Adrian De la Garza Flores" loading="lazy"></div><b>Jorge Adrian De la Garza Flores</b></div>
+        <div class="member"><div class="ph"><img decoding="async" src="assets/team/ruggiero.jpg" alt="Ruggiero Leone" loading="lazy"></div><b>Ruggiero Leone</b></div>
+        <div class="member"><div class="ph"><img decoding="async" src="assets/team/fabrizio.jpg" alt="Fabrizio Mazzoleni" loading="lazy"></div><b>Fabrizio Mazzoleni</b></div>
+        <div class="member"><div class="ph"><img decoding="async" src="assets/team/nicole.jpg" alt="Nicole Cianci" loading="lazy"></div><b>Nicole Cianci</b></div>
+        <div class="member"><div class="ph"><img decoding="async" src="assets/team/davide.jpg" alt="Davide Motta" loading="lazy"></div><b>Davide Motta</b></div>
+        <div class="member"><div class="ph"><img decoding="async" src="assets/team/giulia.jpg" alt="Giulia Brivio" loading="lazy"></div><b>Giulia Brivio</b></div>
+        <div class="member"><div class="ph"><img decoding="async" src="assets/team/jorge.jpg" alt="Jorge Adrian De la Garza Flores" loading="lazy"></div><b>Jorge Adrian De la Garza Flores</b></div>
       </div>
     </div>
   </section>
@@ -650,7 +795,7 @@ body > footer{border-top:6px solid var(--eden)}
 
 <footer>
   <div class="wrap">
-    <img src="assets/logo-word-cream.png" alt="Relook">
+    <img src="assets/logo-word-cream-currant.png" alt="Relook">
     <span>Gruppo Nexus · Fondamenti di HCI · Politecnico di Milano · a.a. 2026/27</span>
   </div>
 </footer>
@@ -682,6 +827,57 @@ body > footer{border-top:6px solid var(--eden)}
     requestAnimationFrame(tick);
   }), { threshold: .5 });
   figs.forEach(d => countIO.observe(d));
+})();
+</script>
+<dialog class="viewer" id="viewer" aria-label="Board di sintesi ingrandita">
+  <div class="viewer-stage"><img src="" alt="Board di sintesi: intervistati, bisogni, bisogni significativi e scenari, quattro personas e soluzioni votate" width="5600" height="2970" draggable="false"></div>
+  <div class="viewer-tools">
+    <button type="button" data-z="out" aria-label="Riduci">−</button><button type="button" data-z="fit">Adatta</button><button type="button" data-z="in" aria-label="Ingrandisci">+</button>
+    <button type="button" class="viewer-close">Chiudi</button>
+  </div>
+  <p class="viewer-hint">Rotella o due dita per lo zoom · trascina per spostarti · Esc per chiudere</p>
+</dialog>
+<script>
+// visualizzatore della board: zoom con rotella/pinch, trascinamento, chiusura con Esc o clic fuori
+(() => {
+  const dlg = document.getElementById('viewer'); if (!dlg || typeof dlg.showModal !== 'function') return;   // senza <dialog> resta il link all'immagine HD
+  const stage = dlg.querySelector('.viewer-stage'), img = stage.querySelector('img'), W = 5600, H = 2970;
+  const LOW = 'assets/processo/brainstorm.jpg', HD = 'assets/processo/brainstorm-hd.jpg';
+  let s = 1, tx = 0, ty = 0, fit = 1, max = 4, opener = null, pinch = null, moved = 0, downOnBg = false, loaded = false;
+  const ptr = new Map(), rect = () => stage.getBoundingClientRect();
+  const apply = () => { const r = rect(), mx = Math.max(0, (W * fit * s - r.width) / 2 + 40), my = Math.max(0, (H * fit * s - r.height) / 2 + 40);
+    tx = Math.min(mx, Math.max(-mx, tx)); ty = Math.min(my, Math.max(-my, ty)); img.style.transform = `translate(-50%,-50%) translate(${tx}px,${ty}px) scale(${s})`; };
+  const layout = () => { const r = rect(); fit = Math.min(r.width * .92 / W, (r.height - 120) / H); img.style.width = W * fit + 'px'; img.style.height = H * fit + 'px'; max = Math.max(2.5, 1.5 / fit); apply(); };
+  const zoomAt = (ns, cx, cy) => { ns = Math.min(max, Math.max(1, ns)); const r = rect(), px = cx - r.left - r.width / 2, py = cy - r.top - r.height / 2;
+    tx = px - (px - tx) * ns / s; ty = py - (py - ty) * ns / s; s = ns; if (s === 1) tx = ty = 0; apply(); };
+  const mid = () => { const r = rect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
+  const open = e => { e.preventDefault(); opener = e.currentTarget; s = 1; tx = ty = 0;
+    if (!loaded) { loaded = true; img.src = LOW; const hd = new Image(); hd.onload = () => { img.src = HD; }; hd.src = HD; }
+    dlg.showModal(); layout(); dlg.querySelector('.viewer-close').focus(); };
+  document.querySelectorAll('[data-viewer]').forEach(el => el.addEventListener('click', open));
+  dlg.querySelector('.viewer-close').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('close', () => { ptr.clear(); pinch = null; opener?.focus(); });
+  dlg.querySelectorAll('[data-z]').forEach(b => b.addEventListener('click', () => { const [cx, cy] = mid(), z = b.dataset.z; if (z === 'fit') { s = 1; tx = ty = 0; apply(); } else zoomAt(s * (z === 'in' ? 1.5 : 1 / 1.5), cx, cy); }));
+  addEventListener('resize', () => { if (dlg.open) layout(); });
+  stage.addEventListener('wheel', e => { e.preventDefault(); zoomAt(s * Math.exp(-e.deltaY * (e.deltaMode ? .05 : .0015)), e.clientX, e.clientY); }, { passive: false });
+  stage.addEventListener('dblclick', e => zoomAt(s > 1.4 ? 1 : 2.5, e.clientX, e.clientY));
+  stage.addEventListener('pointerdown', e => {
+    if (!ptr.size) { moved = 0; downOnBg = e.target === stage; }
+    stage.setPointerCapture(e.pointerId); ptr.set(e.pointerId, { x: e.clientX, y: e.clientY }); stage.classList.add('drag');
+    if (ptr.size === 2) { const [a, b] = [...ptr.values()]; pinch = { d: Math.hypot(a.x - b.x, a.y - b.y) || 1, s }; downOnBg = false; }
+  });
+  stage.addEventListener('pointermove', e => {
+    const p = ptr.get(e.pointerId); if (!p) return; const dx = e.clientX - p.x, dy = e.clientY - p.y; p.x = e.clientX; p.y = e.clientY; moved += Math.abs(dx) + Math.abs(dy);
+    if (ptr.size >= 2 && pinch) { const [a, b] = [...ptr.values()]; tx += dx / 2; ty += dy / 2; zoomAt(pinch.s * Math.hypot(a.x - b.x, a.y - b.y) / pinch.d, (a.x + b.x) / 2, (a.y + b.y) / 2); }
+    else if (s > 1) { tx += dx; ty += dy; apply(); }
+  });
+  const up = e => { if (!ptr.delete(e.pointerId)) return; if (ptr.size < 2) pinch = null;
+    if (!ptr.size) { stage.classList.remove('drag'); if (e.type === 'pointerup' && downOnBg && moved < 6) dlg.close(); } };
+  stage.addEventListener('pointerup', up); stage.addEventListener('pointercancel', up);
+  dlg.addEventListener('keydown', e => { const [cx, cy] = mid(), k = e.key;
+    if (k === '+' || k === '=') zoomAt(s * 1.5, cx, cy); else if (k === '-') zoomAt(s / 1.5, cx, cy); else if (k === '0') { s = 1; tx = ty = 0; apply(); }
+    else if (k.startsWith('Arrow') && s > 1) { tx -= k === 'ArrowRight' ? 80 : k === 'ArrowLeft' ? -80 : 0; ty -= k === 'ArrowDown' ? 80 : k === 'ArrowUp' ? -80 : 0; apply(); } else return;
+    e.preventDefault(); });
 })();
 </script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
